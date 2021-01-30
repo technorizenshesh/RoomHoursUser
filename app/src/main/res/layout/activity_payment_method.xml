@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#F1F2FA"
+    android:layout_height="match_parent"
+    tools:context=".PaymentMwthod.PaymentMethodActivity">
+
+
+    <ScrollView
+        android:layout_above="@+id/txt_debit"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+
+                <LinearLayout
+                    android:layout_marginBottom="@dimen/padding20"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:background="@color/mehroon"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        >
+
+                        <RelativeLayout
+                            android:visibility="visible"
+                            android:id="@+id/RR_tollbar"
+                            android:layout_width="match_parent"
+                            android:layout_height="80dp"
+                            >
+
+                            <RelativeLayout
+                                android:id="@+id/RR_back"
+                                android:layout_width="50dp"
+                                android:layout_height="match_parent"
+                                >
+                                <ImageView
+                                    android:tint="@color/white"
+                                    android:src="@mipmap/back"
+                                    android:layout_centerInParent="true"
+                                    android:layout_width="@dimen/padding30"
+                                    android:layout_height="@dimen/padding30"
+                                    >
+                                </ImageView>
+
+                            </RelativeLayout>
+
+
+                            <TextView
+                                android:layout_centerVertical="true"
+                                android:id="@+id/txt_price"
+                                android:textColor="@color/white"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="@dimen/padding20"
+                                android:singleLine="true"
+                                android:textSize="26dp"
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="$8426" />
+
+
+                        </RelativeLayout>
+
+                        <TextView
+                            android:layout_marginTop="@dimen/padding20"
+                            android:layout_marginLeft="@dimen/padding15"
+                            android:textColor="@color/white"
+                            android:layout_marginRight="@dimen/padding20"
+                            android:singleLine="true"
+                            android:textSize="26dp"
+                            android:textStyle="bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Payment Method" />
+
+                        <TextView
+                            android:layout_marginTop="@dimen/padding10"
+                            android:layout_marginLeft="@dimen/padding15"
+                            android:textColor="@color/white"
+                            android:layout_marginRight="@dimen/padding20"
+                            android:singleLine="true"
+                            android:textSize="@dimen/padding18"
+                            android:textStyle="bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="current method" />
+
+
+
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_marginTop="@dimen/padding20"
+                        android:layout_marginLeft="@dimen/padding15"
+                        android:textColor="@color/black"
+                        android:layout_marginRight="@dimen/padding20"
+                        android:textSize="@dimen/padding16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Choose desires vehicle type. We Offer care suitable for most every day need" />
+
+                    <RelativeLayout
+                        android:id="@+id/RR_card"
+                        android:layout_marginTop="@dimen/padding20"
+                        android:layout_marginLeft="@dimen/padding15"
+                        android:layout_marginRight="@dimen/padding15"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_toLeftOf="@+id/RR_filter"
+                        android:background="@drawable/roundbttn_white_one">
+
+                        <ImageView
+                            android:id="@+id/img_card1"
+                            android:layout_marginLeft="@dimen/padding10"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/credit_card"
+                            android:layout_width="@dimen/padding50"
+                            android:layout_height="@dimen/padding50"
+                            >
+                        </ImageView>
+
+
+                        <RelativeLayout
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginLeft="@dimen/padding20"
+                            android:layout_centerVertical="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            >
+
+                            <TextView
+                                android:id="@+id/txt_payment"
+                                android:singleLine="true"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/padding20"
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Card Payment" />
+
+                            <TextView
+                                android:layout_below="@+id/txt_payment"
+                                android:singleLine="true"
+                                android:textSize="@dimen/padding18"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Default" />
+
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/img_card_one"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="@dimen/padding10"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/check_icon"
+                            android:layout_width="@dimen/padding35"
+                            android:layout_height="@dimen/padding35"
+                            >
+                        </ImageView>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/RR_cash"
+                        android:layout_marginTop="@dimen/padding20"
+                        android:layout_marginLeft="@dimen/padding15"
+                        android:layout_marginRight="@dimen/padding15"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_toLeftOf="@+id/RR_filter"
+                        android:background="@drawable/roundbttn_white_one">
+
+                        <ImageView
+                            android:id="@+id/img_card1"
+                            android:layout_marginLeft="@dimen/padding10"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/credit_card"
+                            android:layout_width="@dimen/padding50"
+                            android:layout_height="@dimen/padding50"
+                            >
+                        </ImageView>
+
+
+                        <TextView
+                            android:layout_centerVertical="true"
+                            android:layout_centerHorizontal="true"
+                            android:singleLine="true"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/padding20"
+                            android:textStyle="bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cash Payment" />
+
+                        <ImageView
+                            android:id="@+id/img_cash_one"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="@dimen/padding10"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/circle_new"
+                            android:layout_width="@dimen/padding35"
+                            android:layout_height="@dimen/padding35"
+                            >
+                        </ImageView>
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:visibility="gone"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/padding20"
+                        android:layout_marginLeft="@dimen/padding15"
+                        android:layout_marginRight="@dimen/padding15"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_toLeftOf="@+id/RR_filter"
+                        android:background="@drawable/roundbttn_white_one">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/padding10"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/credit_card"
+                            android:layout_width="@dimen/padding50"
+                            android:layout_height="@dimen/padding50"
+                            >
+                        </ImageView>
+
+                        <TextView
+                            android:layout_marginLeft="@dimen/padding20"
+                            android:layout_gravity="center"
+                            android:singleLine="true"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/padding20"
+                            android:textStyle="bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cash Payment" />
+
+                        <ImageView
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="@dimen/padding10"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/check_icon"
+                            android:layout_width="@dimen/padding35"
+                            android:layout_height="@dimen/padding35"
+                            >
+                        </ImageView>
+
+
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/RR_next"
+                        android:layout_marginTop="@dimen/padding20"
+                        android:layout_marginRight="@dimen/padding30"
+                        android:layout_marginLeft="@dimen/padding30"
+                        android:backgroundTint="@color/Mehroon_one"
+                        android:layout_width="match_parent"
+                        android:background="@drawable/roundbttn_black"
+                        android:layout_height="55dp">
+
+
+                        <TextView
+                            android:layout_centerHorizontal="true"
+                            android:textSize="18dp"
+                            android:textStyle="bold"
+                            android:layout_centerVertical="true"
+                            android:textColor="@color/white"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Next"
+                            />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/txt_debit"
+                        android:layout_marginBottom="@dimen/padding10"
+                        android:layout_above="@+id/img_card"
+                        android:gravity="center"
+                        android:layout_marginTop="@dimen/padding20"
+                        android:layout_marginLeft="@dimen/padding15"
+                        android:textColor="@color/black"
+                        android:layout_marginRight="@dimen/padding20"
+                        android:textSize="@dimen/padding12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Debit card are accepted at same Location and for same categories" />
+
+                    <ImageView
+                        android:id="@+id/img_card"
+                        android:layout_margin="@dimen/padding10"
+                        android:layout_alignParentBottom="true"
+                        android:layout_gravity="bottom"
+                        android:src="@drawable/cards"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/padding50"
+                        >
+                    </ImageView>
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+
+
+</RelativeLayout>

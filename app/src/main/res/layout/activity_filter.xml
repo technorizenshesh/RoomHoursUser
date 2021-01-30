@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FilterScreen.FilterActivity"
+    android:background="#F1F2FA"
+    android:padding="@dimen/padding10"
+    >
+
+    <RelativeLayout
+        android:id="@+id/RR_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        >
+
+        <TextView
+            android:layout_margin="@dimen/padding10"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Filters"
+            android:textColor="@color/black"
+            android:textSize="26dp">
+        </TextView>
+
+        <TextView
+            android:layout_toLeftOf="@+id/RR_filter"
+            android:layout_margin="@dimen/padding10"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clear all"
+            android:textColor="@color/black"
+            android:textSize="@dimen/padding20">
+        </TextView>
+
+        <RelativeLayout
+            android:id="@+id/RR_filter"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/padding10"
+            android:padding="@dimen/padding5">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_margin="@dimen/padding5"
+                android:src="@mipmap/filter">
+
+            </ImageView>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_above="@+id/RR_apply_filter"
+        android:visibility="visible"
+        android:layout_below="@+id/RR_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <LinearLayout
+
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:layout_marginLeft="@dimen/padding10"
+                android:layout_marginTop="@dimen/padding10"
+                android:id="@+id/txt_sort_by"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sort by"
+                android:textColor="@color/black"
+                android:textSize="@dimen/padding20">
+            </TextView>
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/padding10"
+                android:orientation="vertical"
+                android:layout_below="@+id/txt_sort_by"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <CheckBox
+                        android:backgroundTint="@color/mehroon"
+                        android:layout_width="@dimen/padding50"
+                        android:layout_height="@dimen/padding50"
+                        android:button="@null"
+                        android:background="?android:attr/listChoiceIndicatorMultiple"/>
+
+                    <TextView
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/padding18"
+                        android:text="Less Price First"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+                    </TextView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <CheckBox
+                        android:backgroundTint="@color/mehroon"
+                        android:layout_width="@dimen/padding50"
+                        android:layout_height="@dimen/padding50"
+                        android:button="@null"
+                        android:background="?android:attr/listChoiceIndicatorMultiple"/>
+
+                    <TextView
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/padding18"
+                        android:text="Nearest to me First"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+                    </TextView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <CheckBox
+                        android:backgroundTint="@color/mehroon"
+                        android:layout_width="@dimen/padding50"
+                        android:layout_height="@dimen/padding50"
+                        android:button="@null"
+                        android:background="?android:attr/listChoiceIndicatorMultiple"/>
+
+                    <TextView
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/padding18"
+                        android:text="Best  Rated First "
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+                    </TextView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginLeft="@dimen/padding10"
+                android:layout_marginTop="@dimen/padding10"
+                android:layout_below="@+id/RR_toolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Filter    "
+                android:textColor="@color/black"
+                android:textSize="@dimen/padding20">
+
+            </TextView>
+
+            <TextView
+                android:layout_marginLeft="@dimen/padding10"
+                android:layout_marginTop="@dimen/padding10"
+                android:layout_below="@+id/RR_toolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Prices"
+                android:textColor="@color/black"
+                android:textSize="@dimen/padding20">
+            </TextView>
+
+            <SeekBar
+                android:theme="@style/SeekBarColor"
+                android:thumbTint="@color/red"
+                android:layout_marginBottom="@dimen/padding10"
+                android:layout_marginTop="@dimen/padding10"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/padding20">
+
+            </SeekBar>
+
+            <TextView
+                android:layout_marginLeft="@dimen/padding10"
+                android:layout_marginTop="@dimen/padding10"
+                android:layout_below="@+id/RR_toolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reting"
+                android:textColor="@color/black"
+                android:textSize="@dimen/padding20">
+            </TextView>
+
+            <RatingBar
+                android:progressTint="@color/yellow"
+                android:rating="3"
+                android:layout_marginTop="@dimen/padding10"
+                android:id="@+id/rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                android:stepSize="0.1"
+                android:isIndicator="true" />
+
+            <TextView
+                android:layout_marginLeft="@dimen/padding10"
+                android:layout_marginTop="@dimen/padding10"
+                android:layout_below="@+id/RR_toolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Services"
+                android:textColor="@color/black"
+                android:textSize="@dimen/padding20">
+            </TextView>
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/padding10"
+                android:layout_width="match_parent"
+                android:layout_height="70dp">
+
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/Mehroon_one"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toLeftOf="@+id/RR_filter"
+                    android:background="@drawable/roundbttn_white">
+
+
+                    <ImageView
+                        android:id="@+id/img_bathroom"
+                        android:src="@drawable/google_icon"
+                        android:layout_marginLeft="@dimen/padding10"
+                        android:layout_centerVertical="true"
+                        android:layout_width="@dimen/padding25"
+                        android:layout_height="@dimen/padding25"
+                        >
+
+                    </ImageView>
+
+                    <TextView
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="@dimen/padding5"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/img_bathroom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Private bathroom in the room"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/padding14" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_marginLeft="@dimen/padding10"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toLeftOf="@+id/RR_filter"
+                    android:background="@drawable/roundbttn_white">
+
+
+                    <ImageView
+                        android:id="@+id/img_auto"
+                        android:src="@drawable/google_icon"
+                        android:layout_marginLeft="@dimen/padding10"
+                        android:layout_centerVertical="true"
+                        android:layout_width="@dimen/padding25"
+                        android:layout_height="@dimen/padding25"
+                        >
+
+                    </ImageView>
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:layout_marginLeft="@dimen/padding5"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/img_auto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Automatic Booking"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/padding14" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/padding10"
+                android:layout_width="match_parent"
+                android:layout_height="70dp">
+
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toLeftOf="@+id/RR_filter"
+                    android:background="@drawable/roundbttn_white">
+
+
+                    <ImageView
+                        android:id="@+id/img_bathroom"
+                        android:src="@drawable/google_icon"
+                        android:layout_marginLeft="@dimen/padding10"
+                        android:layout_centerVertical="true"
+                        android:layout_width="@dimen/padding25"
+                        android:layout_height="@dimen/padding25"
+                        >
+
+                    </ImageView>
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:layout_marginLeft="@dimen/padding5"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/img_bathroom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Air Conditioned"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/padding14" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_marginLeft="@dimen/padding10"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/Mehroon_one"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toLeftOf="@+id/RR_filter"
+                    android:background="@drawable/roundbttn_white">
+
+
+                    <ImageView
+                        android:id="@+id/img_auto"
+                        android:src="@drawable/google_icon"
+                        android:layout_marginLeft="@dimen/padding10"
+                        android:layout_centerVertical="true"
+                        android:layout_width="@dimen/padding25"
+                        android:layout_height="@dimen/padding25"
+                        >
+
+                    </ImageView>
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:layout_marginLeft="@dimen/padding5"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/img_auto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cash Payment"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/padding14" />
+
+                </RelativeLayout>
+
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/padding10"
+                android:layout_width="match_parent"
+                android:layout_height="70dp">
+
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toLeftOf="@+id/RR_filter"
+                    android:background="@drawable/roundbttn_white">
+
+
+                    <ImageView
+                        android:id="@+id/img_bathroom"
+                        android:src="@drawable/google_icon"
+                        android:layout_marginLeft="@dimen/padding10"
+                        android:layout_centerVertical="true"
+                        android:layout_width="@dimen/padding25"
+                        android:layout_height="@dimen/padding25"
+                        >
+
+                    </ImageView>
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:layout_marginLeft="@dimen/padding5"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/img_bathroom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Air Conditioned"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/padding16" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:visibility="invisible"
+                    android:layout_marginLeft="@dimen/padding10"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/Mehroon_one"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toLeftOf="@+id/RR_filter"
+                    android:background="@drawable/roundbttn_white">
+
+
+                    <ImageView
+                        android:id="@+id/img_auto"
+                        android:src="@drawable/google_icon"
+                        android:layout_marginLeft="@dimen/padding10"
+                        android:layout_centerVertical="true"
+                        android:layout_width="@dimen/padding25"
+                        android:layout_height="@dimen/padding25"
+                        >
+
+                    </ImageView>
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:layout_marginLeft="@dimen/padding10"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/img_auto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Heating"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/padding14" />
+
+                </RelativeLayout>
+
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/RR_apply_filter"
+        android:layout_margin="@dimen/padding5"
+        android:layout_alignParentBottom="true"
+        android:layout_weight="1"
+        android:backgroundTint="@color/Mehroon_one"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/padding50"
+        android:background="@drawable/roundbttn_white">
+
+
+        <TextView
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Apply Filter"
+            android:textColor="@color/white"
+            android:textSize="@dimen/padding18" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

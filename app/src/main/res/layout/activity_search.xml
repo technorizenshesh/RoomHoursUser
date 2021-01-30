@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SearchScreen.SearchActivity"
+    android:background="#F8F9FE"
+    android:padding="@dimen/padding15"
+    >
+
+    <RelativeLayout
+        android:visibility="visible"
+        android:id="@+id/RR_tollbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        >
+        <RelativeLayout
+            android:id="@+id/RR_back"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            >
+            <ImageView
+                android:src="@mipmap/back"
+                android:layout_centerInParent="true"
+                android:layout_width="@dimen/padding25"
+                android:layout_height="@dimen/padding25"
+                >
+            </ImageView>
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+    <ProgressBar
+        android:layout_centerInParent="true"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/progressBar"
+        android:background="@drawable/progresh_background"
+        android:elevation="@dimen/padding6"
+        android:padding="@dimen/padding5"
+        android:indeterminate="true"
+        android:indeterminateTintMode="src_atop"
+        android:indeterminateTint="@color/green_new"
+        android:visibility="gone"/>
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/padding10"
+        android:layout_below="@+id/RR_tollbar"
+        android:id="@+id/RR_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="10dp"
+        android:paddingBottom="3dp"
+        android:paddingTop="3dp"
+        android:paddingRight="10dp"
+        android:backgroundTint="#ECECEC"
+        android:background="@drawable/roundbttn_white">
+
+        <ImageView
+            android:id="@+id/img_search"
+            android:layout_width="@dimen/padding22"
+            android:layout_height="@dimen/padding22"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/search"></ImageView>
+
+        <EditText
+            android:paddingLeft="@dimen/padding15"
+            android:layout_toRightOf="@+id/img_search"
+            android:id="@+id/edt_search"
+            android:layout_width="match_parent"
+            android:visibility="visible"
+            android:layout_height="50dp"
+            android:background="@null"
+            android:padding="5dp"
+            android:hint="Type a Location"
+            android:singleLine="true"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_marginTop="@dimen/padding20"
+        android:layout_below="@+id/RR_search"
+        android:id="@+id/txt_name"
+        android:layout_alignParentLeft="true"
+        android:textColor="@color/black"
+        android:text="Papular searches"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/padding20"/>
+
+    <View
+        android:id="@+id/view"
+        android:layout_marginTop="@dimen/padding20"
+        android:background="@color/gray"
+        android:layout_below="@+id/txt_name"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        ></View>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/view"
+        android:id="@+id/recycler_view_ProductList"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="100dp"
+        android:layout_marginTop="@dimen/padding10"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        android:visibility="visible"
+        />
+
+</RelativeLayout>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/RR_home"
+    android:background="#F8F9FE"
+    >
+
+    <ProgressBar
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:id="@+id/progressBar"
+        android:background="@drawable/progresh_background"
+        android:elevation="@dimen/padding6"
+        android:padding="@dimen/padding5"
+        android:indeterminate="true"
+        android:indeterminateTintMode="src_atop"
+        android:indeterminateTint="@color/colorPrimary"
+        android:visibility="gone"/>
+
+    <TextView
+        android:layout_centerInParent="true"
+        android:id="@+id/txt_emty"
+        android:singleLine="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No Favourites Item"
+        android:visibility="gone"
+        android:textColor="@color/black"
+        android:textSize="@dimen/padding14" />
+
+
+    <RelativeLayout
+        android:id="@+id/RR_fav"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <TextView
+            android:id="@+id/txt_best_match"
+            android:layout_marginTop="@dimen/padding20"
+            android:layout_below="@+id/RR_recommended"
+            android:layout_marginLeft="@dimen/padding10"
+            android:singleLine="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Favourites"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/pading24" />
+
+        <RelativeLayout
+            android:id="@+id/RR_best_match"
+            android:layout_marginTop="@dimen/padding20"
+            android:layout_below="@+id/txt_best_match"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_best_match"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical"
+                android:layoutDirection="rtl"
+                android:visibility="visible"
+                />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

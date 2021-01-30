@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F1F2FA"
+    android:padding="@dimen/padding10"
+    tools:context=".ChooseDateTime.ChooseDateTime"
+    >
+
+
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:id="@+id/LL_select_date"
+            android:weightSum="2"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_toLeftOf="@+id/RR_filter"
+            android:background="@drawable/roundbttn_white_one">
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+                <RelativeLayout
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/txt_day_check_in"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:text="Day Check In"
+                        android:textSize="17dp"
+                        >
+                    </TextView>
+
+                    <RelativeLayout
+                        android:id="@+id/RR_date_checkIn"
+                        android:layout_margin="@dimen/padding10"
+                        android:layout_below="@+id/txt_day_check_in"
+                        android:background="@drawable/black_border"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/padding50"
+                        >
+
+                        <TextView
+                            android:id="@+id/txt_date_in"
+                            android:layout_toLeftOf="@+id/img_arrow"
+                            android:textColor="@color/mehroon"
+                            android:layout_centerVertical="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:text="Select Date"
+                            android:textSize="17dp"
+                            >
+                        </TextView>
+
+                        <ImageView
+                            android:tint="@color/mehroon"
+                            android:src="@drawable/drop_down"
+                            android:id="@+id/img_arrow"
+                            android:layout_margin="@dimen/padding10"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_width="@dimen/padding12"
+                            android:layout_height="@dimen/padding12">
+
+                        </ImageView>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="visible"
+                android:id="@+id/RR_chekcout"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+                <RelativeLayout
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/txt_day_check_out"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:text="Day Check out"
+                        android:textSize="17dp"
+                        >
+                    </TextView>
+
+                    <RelativeLayout
+                        android:id="@+id/RR_date_checkOut"
+                        android:layout_margin="@dimen/padding10"
+                        android:layout_below="@+id/txt_day_check_out"
+                        android:background="@drawable/black_border"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/padding50">
+
+                        <TextView
+                            android:id="@+id/txt_chck_out"
+                            android:layout_toLeftOf="@+id/img_arrowone"
+                            android:textColor="@color/mehroon"
+                            android:layout_centerVertical="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:text="Select Date"
+                            android:textSize="17dp"
+                            >
+                        </TextView>
+
+                        <ImageView
+                            android:tint="@color/mehroon"
+                            android:src="@drawable/drop_down"
+                            android:id="@+id/img_arrowone"
+                            android:layout_margin="@dimen/padding10"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_width="@dimen/padding12"
+                            android:layout_height="@dimen/padding12">
+                        </ImageView>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:backgroundTint="@color/white"
+            android:id="@+id/RR_select_check"
+            android:layout_marginTop="@dimen/padding20"
+            android:layout_below="@+id/LL_select_date"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_toLeftOf="@+id/RR_filter"
+            android:background="@drawable/roundbttn_white_one">
+
+            <CheckBox
+                android:id="@+id/check_for_hour"
+                android:layout_centerVertical="true"
+                android:backgroundTint="@color/mehroon"
+                android:layout_width="@dimen/padding40"
+                android:layout_height="@dimen/padding40"
+                android:button="@null"
+                android:background="?android:attr/listChoiceIndicatorMultiple"/>
+
+
+            <ImageView
+                android:visibility="gone"
+                android:layout_marginLeft="@dimen/padding10"
+                android:src="@drawable/check_icon"
+                android:layout_centerVertical="true"
+                android:layout_width="@dimen/padding25"
+                android:layout_height="@dimen/padding25"
+                >
+
+            </ImageView>
+
+            <TextView
+                android:textColor="@color/black"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="I want rent for hour"
+                android:textSize="@dimen/padding20"
+                >
+            </TextView>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/RR_selected_hour"
+            android:layout_marginTop="@dimen/padding20"
+            android:layout_below="@+id/RR_select_check"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:backgroundTint="@color/white"
+            android:layout_toLeftOf="@+id/RR_filter"
+            android:background="@drawable/roundbttn_white_one">
+
+
+            <LinearLayout
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                >
+
+                <RelativeLayout
+                    android:id="@+id/RR_one_hour"
+                    android:layout_gravity="center"
+                    android:layout_width="65dp"
+                    android:layout_height="60dp"
+                    android:layout_toLeftOf="@+id/RR_filter"
+                    android:background="@drawable/roundbttn_white_one_yellow">
+
+
+                    <TextView
+                        android:id="@+id/txt_one"
+                        android:textColor="@color/white"
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1h"
+                        android:textSize="@dimen/padding18"
+                        >
+                    </TextView>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/RR_two_hour"
+                    android:layout_marginLeft="@dimen/padding10"
+                    android:layout_gravity="center"
+                    android:layout_width="65dp"
+                    android:layout_height="60dp"
+                    android:layout_toLeftOf="@+id/RR_filter"
+                    android:background="@drawable/roundbttn_white_one">
+
+                    <TextView
+                        android:id="@+id/txt_two"
+                        android:textColor="@color/black"
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2h"
+                        android:textSize="@dimen/padding18"
+                        >
+                    </TextView>
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/RR_three_hour"
+                    android:layout_marginLeft="@dimen/padding10"
+                    android:layout_gravity="center"
+                    android:layout_width="65dp"
+                    android:layout_height="60dp"
+                    android:layout_toLeftOf="@+id/RR_filter"
+                    android:background="@drawable/roundbttn_white_one">
+
+                    <TextView
+                        android:layout_centerInParent="true"
+                        android:layout_centerHorizontal="true"
+                        android:id="@+id/txt_three"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="3h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/padding18"
+                        >
+
+                    </TextView>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/RR_four_sex_hour"
+                    android:layout_marginLeft="@dimen/padding10"
+                    android:layout_gravity="center"
+                    android:layout_width="65dp"
+                    android:layout_height="60dp"
+                    android:layout_toLeftOf="@+id/RR_filter"
+                    android:background="@drawable/roundbttn_white_one">
+
+                    <TextView
+                        android:singleLine="true"
+                        android:layout_centerInParent="true"
+                        android:id="@+id/txt_four"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4-6h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/padding18"></TextView>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/padding20"
+            android:background="@drawable/roundbttn_white_one"
+            android:layout_below="@+id/RR_selected_hour"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <RelativeLayout
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txt_arriebel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="Day Check In"
+                    android:textSize="17dp"
+                    >
+                </TextView>
+
+                <RelativeLayout
+                    android:layout_margin="@dimen/padding10"
+                    android:layout_below="@+id/txt_arriebel"
+                    android:background="@drawable/black_border"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/padding50">
+
+                    <TextView
+                        android:textColor="@color/mehroon"
+                        android:layout_centerVertical="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:text="28 Aug 2020"
+                        android:textSize="17dp"
+                        >
+                    </TextView>
+
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginTop="@dimen/padding20"
+                android:id="@+id/RR_next"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="match_parent"
+                android:background="@drawable/roundbttn_red"
+                android:layout_height="55dp">
+
+                <RelativeLayout
+                    android:paddingLeft="@dimen/padding10"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+                    <ImageView
+                        android:layout_marginRight="@dimen/padding20"
+                        android:tint="@color/white"
+                        android:layout_alignParentRight="true"
+                        android:id="@+id/img_mail"
+                        android:layout_centerVertical="true"
+                        android:layout_width="@dimen/padding20"
+                        android:layout_height="@dimen/padding20"
+                        android:src="@drawable/left_arrow"
+                        >
+                    </ImageView>
+
+                    <TextView
+                        android:layout_marginLeft="@dimen/padding20"
+                        android:textSize="@dimen/padding16"
+                        android:textStyle="bold"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/white"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Next"
+                        />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

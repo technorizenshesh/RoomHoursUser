@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/RR_home"
+    android:background="#F8F9FE"
+    >
+
+    <ProgressBar
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:id="@+id/progressBar"
+        android:background="@drawable/progresh_background"
+        android:elevation="@dimen/padding6"
+        android:padding="@dimen/padding5"
+        android:indeterminate="true"
+        android:indeterminateTintMode="src_atop"
+        android:indeterminateTint="@color/colorPrimary"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <RelativeLayout
+            android:id="@+id/RR_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="45dp">
+
+            <TextView
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:textColor="@color/black"
+                android:text="All"
+                android:textSize="@dimen/padding20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+            </TextView>
+            <RelativeLayout
+                android:id="@+id/RR_back"
+                android:layout_width="@dimen/padding50"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/back"
+                    android:layout_width="@dimen/padding25"
+                    android:layout_height="@dimen/padding25"
+                    >
+
+                </ImageView>
+
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/LL_member_map"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding20"
+            android:layout_marginLeft="@dimen/padding20"
+            android:layout_marginRight="@dimen/padding20"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/RR_Search"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/padding50"
+                android:layout_toLeftOf="@+id/RR_filter"
+                android:background="@drawable/roundbttn_white">
+
+                <ImageView
+                    android:id="@+id/img_search"
+                    android:layout_width="@dimen/padding22"
+                    android:layout_height="@dimen/padding22"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/padding15"
+                    android:src="@mipmap/search"></ImageView>
+
+                <EditText
+                    android:id="@+id/edt_search"
+                    android:paddingLeft="@dimen/padding10"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/padding10"
+                    android:layout_toRightOf="@+id/img_search"
+                    android:hint="Search by state or zip code"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/padding14"
+                    />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/RR_recommended"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/RR_toolbar"
+            android:layout_marginTop="@dimen/padding5">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_recommended"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical"
+                android:visibility="visible" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

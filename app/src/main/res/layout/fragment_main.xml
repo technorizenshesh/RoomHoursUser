@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/RR_home"
+    android:background="#F8F9FE"
+    >
+
+    <ProgressBar
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:id="@+id/progressBar"
+        android:background="@drawable/progresh_background"
+        android:elevation="@dimen/padding6"
+        android:padding="@dimen/padding5"
+        android:indeterminate="true"
+        android:indeterminateTintMode="src_atop"
+        android:indeterminateTint="@color/colorPrimary"
+        android:visibility="gone"
+        />
+
+
+    <ScrollView
+        android:layout_marginBottom="@dimen/padding20"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <RelativeLayout
+            android:layout_marginBottom="@dimen/padding20"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/LL_member_map"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding20"
+                    android:layout_marginRight="@dimen/padding10"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/RR_Search"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/padding50"
+                        android:layout_toLeftOf="@+id/RR_filter"
+                        android:background="@drawable/roundbttn_white">
+
+                        <ImageView
+                            android:id="@+id/img_search"
+                            android:layout_width="@dimen/padding22"
+                            android:layout_height="@dimen/padding22"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/padding15"
+                            android:src="@mipmap/search"></ImageView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/padding10"
+                            android:layout_toRightOf="@+id/img_search"
+                            android:text="Search by state or zip code"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/padding14" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/RR_filter"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/padding10"
+                        android:padding="@dimen/padding5">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="@dimen/padding5"
+                            android:src="@mipmap/filter"></ImageView>
+
+                    </RelativeLayout>
+
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/LL_map_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/LL_member_map"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/padding20"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/RR_map"
+                        android:layout_width="120dp"
+                        android:layout_height="@dimen/padding50"
+                        android:layout_toLeftOf="@+id/RR_filter"
+                        android:background="@drawable/roundbttn_white">
+
+
+                        <TextView
+                            android:id="@+id/txt_map"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/padding10"
+                            android:text="Map"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/padding22" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/RR_list"
+                        android:layout_width="120dp"
+                        android:layout_height="@dimen/padding50"
+                        android:layout_marginLeft="@dimen/padding10"
+                        android:layout_toLeftOf="@+id/RR_filter"
+                        android:background="@drawable/roundbttn_mehroon">
+
+
+                        <TextView
+                            android:id="@+id/txt_list"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:text="List"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/padding22" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txt_Recommended"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/LL_map_list"
+                    android:layout_marginLeft="@dimen/padding10"
+                    android:layout_marginTop="@dimen/padding5"
+                    android:singleLine="true"
+                    android:text="Recommended"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/padding18"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:padding="@dimen/padding5"
+                    android:id="@+id/txt_view_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/LL_map_list"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="@dimen/padding10"
+                    android:layout_marginTop="@dimen/padding5"
+                    android:layout_marginRight="@dimen/padding10"
+                    android:singleLine="true"
+                    android:text="View All"
+                    android:textColor="@color/Mehroon_one"
+                    android:textSize="@dimen/padding14"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:id="@+id/RR_recommended"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_Recommended"
+                    android:layout_marginTop="@dimen/padding5">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_recommended"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layoutDirection="rtl"
+                        android:scrollbars="vertical"
+                        android:visibility="visible" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/txt_best_match"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/RR_recommended"
+                    android:layout_marginLeft="@dimen/padding10"
+                    android:layout_marginTop="@dimen/padding5"
+                    android:singleLine="true"
+                    android:text="Best Match"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/padding18"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:id="@+id/RR_best_match"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_best_match"
+                    android:layout_marginTop="@dimen/padding5">
+
+                    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        xmlns:tools="http://schemas.android.com/tools"
+                        android:id="@+id/card_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/padding10"
+                        android:background="#64000000"
+                        android:visibility="gone"
+                        app:cardCornerRadius="@dimen/padding10"
+                        tools:ignore="MissingDefaultResource">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <RelativeLayout
+                                android:id="@+id/rr_super_item"
+                                android:layout_width="match_parent"
+                                android:layout_height="150dp"
+                                android:background="#ECEFF1">
+
+                                <ImageView
+                                    android:id="@+id/haircut_img"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:fitsSystemWindows="true"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/img_location" />
+
+
+                                <Button
+                                    android:id="@+id/RR_view"
+                                    android:layout_width="80dp"
+                                    android:layout_height="@dimen/padding25"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_margin="5dp"
+                                    android:background="@drawable/roundbttn_register"
+                                    android:text="VERIFIED"
+                                    android:textAllCaps="false"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/padding12" />
+
+                                <RelativeLayout
+                                    android:layout_width="@dimen/padding30"
+                                    android:layout_height="@dimen/padding30"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_margin="5dp"
+                                    android:background="@drawable/roundbttn_view"
+                                    android:paddingLeft="@dimen/padding5"
+                                    android:paddingRight="@dimen/padding5">
+
+                                    <ImageView
+                                        android:id="@+id/img_star"
+                                        android:layout_width="@dimen/padding18"
+                                        android:layout_height="@dimen/padding18"
+                                        android:layout_centerInParent="true"
+                                        android:src="@drawable/add_fav"
+                                        android:tint="@color/red" />
+
+                                </RelativeLayout>
+
+                            </RelativeLayout>
+
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <RelativeLayout
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/card_img"
+                        android:layout_marginTop="-10dp"
+                        android:visibility="gone">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/padding10"
+                            android:background="@drawable/roundbttn_white"
+                            android:padding="@dimen/padding5">
+
+                            <TextView
+                                android:id="@+id/txt_recommended"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_marginLeft="@dimen/padding5"
+                                android:singleLine="true"
+                                android:text="Recommended"
+                                android:textSize="@dimen/pading14"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/product_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/txt_recommended"
+                                android:layout_alignParentLeft="true"
+                                android:layout_marginLeft="@dimen/padding5"
+                                android:singleLine="true"
+                                android:text="Sam74"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/padding14"
+                                android:textStyle="bold" />
+
+                            <RatingBar
+                                android:id="@+id/rating1"
+                                style="?android:attr/ratingBarStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/product_name"
+                                android:layout_alignParentLeft="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="-5dp"
+                                android:layout_marginTop="@dimen/padding5"
+                                android:isIndicator="false"
+                                android:max="5"
+                                android:rating="5"
+                                android:scaleX=".8"
+                                android:scaleY=".8"
+                                android:theme="@style/MyRatingBar1" />
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/product_name"
+                                android:layout_marginTop="@dimen/padding3"
+                                android:layout_toRightOf="@+id/rating1"
+                                android:text="5.0 (44)"
+                                android:textSize="@dimen/padding14"
+                                android:textStyle="bold"></TextView>
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_best_match"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layoutDirection="rtl"
+                        android:scrollbars="vertical"
+                        android:visibility="visible" />
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "962522417812",
+    "firebase_url": "https://roomhoursuser.firebaseio.com",
+    "project_id": "roomhoursuser",
+    "storage_bucket": "roomhoursuser.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:962522417812:android:966860cc94e2ec64828281",
+        "android_client_info": {
+          "package_name": "com.example.roomhoursuser"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "962522417812-sr1vku05enajtfku8lit18iiru8tpt56.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.roomhoursuser",
+            "certificate_hash": "76377a3119c784bf791094ce7c80f2a31a5e8052"
+          }
+        },
+        {
+          "client_id": "962522417812-3a2sh3685i2unt1oeekd3tfuoaaf4bc7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBd52qVQSpgPlW6aNrHeIB26R__hsDFp0k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "962522417812-3a2sh3685i2unt1oeekd3tfuoaaf4bc7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
