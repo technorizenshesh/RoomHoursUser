@@ -52,7 +52,7 @@ public class FavRoomAllRecyclerViewAdapter extends RecyclerView.Adapter<Recycler
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_best_match, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_fav, viewGroup, false);
         return new ViewHolder(view);
     }
 
@@ -67,6 +67,7 @@ public class FavRoomAllRecyclerViewAdapter extends RecyclerView.Adapter<Recycler
           genericViewHolder.product_name.setText(model.getTitle().toString());
 
          String image_URL = model.getImage().toString();
+
 
           /*  if(image_URL !=null)
             {

@@ -16,12 +16,14 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.roomhoursuser.CheckInScreen.CheckInActivity;
+import com.example.roomhoursuser.GPSTracker;
 import com.example.roomhoursuser.HomeFragment.HomeDataModel;
 import com.example.roomhoursuser.HomeFragment.HomeFragment;
 import com.example.roomhoursuser.HomeFragment.HomeModel;
 import com.example.roomhoursuser.HomeFragment.RecommendedRecyclerViewAdapter;
 import com.example.roomhoursuser.Preference;
 import com.example.roomhoursuser.R;
+import com.example.roomhoursuser.SplashScreen;
 import com.example.roomhoursuser.Utills.RetrofitClients;
 import com.example.roomhoursuser.Utills.SessionManager;
 
@@ -43,29 +45,81 @@ public class ViewAllActivity extends AppCompatActivity {
     private SessionManager sessionManager;
 
     private EditText edt_search;
+    GPSTracker  gpsTracker;
+
+    String latitude="";
+    String longitude="";
+    String Type="";
+    String less_price="";
+    String private_room="";
+    String air_room="";
+    String heating="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_all);
 
+
+        findBy();
+
+        Intent intent=getIntent();
+        if(intent != null)
+        {
+            Type= intent.getStringExtra("type").toString();
+            less_price= intent.getStringExtra("less_price").toString();
+            private_room= intent.getStringExtra("private_room").toString();
+            air_room= intent.getStringExtra("air_room").toString();
+            heating= intent.getStringExtra("heating").toString();
+        }
+
+
+        if(Type.equalsIgnoreCase("Filter"))
+        {
+            if (sessionManager.isNetworkAvailable()) {
+                progressBar.setVisibility(View.VISIBLE);
+                // callRoomDetailsApi();
+                filterApi(latitude,longitude,less_price,private_room,air_room,heating);
+                // callLoginApiSocial();
+
+            }else {
+                Toast.makeText(this, getResources().getString(R.string.checkInternet), Toast.LENGTH_SHORT).show();
+            }
+
+        }else
+        {
+            if (sessionManager.isNetworkAvailable()) {
+                progressBar.setVisibility(View.VISIBLE);
+                // callRoomDetailsApi();
+                filterApi("","","","","","");
+                // callLoginApiSocial();
+
+            }else {
+                Toast.makeText(this, getResources().getString(R.string.checkInternet), Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+
+    }
+
+    private void findBy() {
+
         //android device Id
         android_id = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
         sessionManager = new SessionManager(this);
-
         recycler_recommended=findViewById(R.id.recycler_recommended);
         progressBar=findViewById(R.id.progressBar);
         RR_back=findViewById(R.id.RR_back);
         edt_search=findViewById(R.id.edt_search);
 
-
-        if (sessionManager.isNetworkAvailable()) {
-            progressBar.setVisibility(View.VISIBLE);
-            callRoomDetailsApi();
-            // callLoginApiSocial();
-
-        }else {
-            Toast.makeText(this, getResources().getString(R.string.checkInternet), Toast.LENGTH_SHORT).show();
+        //Lat Lon
+        gpsTracker=new GPSTracker(ViewAllActivity.this);
+        if(gpsTracker.canGetLocation()){
+            latitude = String.valueOf(gpsTracker.getLatitude());
+            longitude = String.valueOf(gpsTracker.getLongitude());
+        }else{
+            gpsTracker.showSettingsAlert();
         }
 
         RR_back.setOnClickListener(new View.OnClickListener() {
@@ -97,6 +151,7 @@ public class ViewAllActivity extends AppCompatActivity {
                 //you can use runnable postDelayed like 500 ms to delay search text
             }
         });
+
     }
 
     void filter(String text){
@@ -166,7 +221,57 @@ public class ViewAllActivity extends AppCompatActivity {
                         Toast.makeText(ViewAllActivity.this, result, Toast.LENGTH_SHORT).show();
 
                     }
+
                 } catch (Exception e) {
+
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<HomeModel> call, Throwable t) {
+                progressBar.setVisibility(View.GONE);
+                Toast.makeText(ViewAllActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    public void filterApi(String lat,String Long,String LessPrice,String PrivateBath,String airRoom,String heating) {
+
+        String User_Id= Preference.get(ViewAllActivity.this,Preference.KEY_USER_ID);
+
+        Call<HomeModel> call = RetrofitClients
+                .getInstance()
+                .getApi()
+                .room_filter(lat,Long,LessPrice,PrivateBath,airRoom,heating);
+
+        call.enqueue(new Callback<HomeModel>() {
+            @Override
+            public void onResponse(Call<HomeModel> call, Response<HomeModel> response) {
+                try {
+
+                    progressBar.setVisibility(View.GONE);
+
+                    HomeModel myclass= response.body();
+
+                    String status = myclass.getStatus();
+                    String result = myclass.getMessage();
+
+                    if (status.equalsIgnoreCase("1")){
+
+                        modelList = (ArrayList<HomeDataModel>) myclass.getResult();
+
+                        setAdapter(modelList);
+
+                    }else {
+
+                        Toast.makeText(ViewAllActivity.this, result, Toast.LENGTH_SHORT).show();
+
+                    }
+
+                } catch (Exception e) {
+
                     e.printStackTrace();
                 }
             }

@@ -33,6 +33,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.roomhoursuser.CheckInScreen.CheckInActivity;
 import com.example.roomhoursuser.FavFragmen.FavFragment;
 import com.example.roomhoursuser.FilterScreen.FilterActivity;
+import com.example.roomhoursuser.GPSTracker;
 import com.example.roomhoursuser.HomeFragment.BestMatchModel;
 import com.example.roomhoursuser.HomeFragment.BestMatchRecyclerViewAdapter;
 import com.example.roomhoursuser.HomeFragment.HomeDataModel;
@@ -44,6 +45,7 @@ import com.example.roomhoursuser.R;
 import com.example.roomhoursuser.SearchScreen.SearchActivity;
 import com.example.roomhoursuser.Utills.RetrofitClients;
 import com.example.roomhoursuser.Utills.SessionManager;
+import com.example.roomhoursuser.ViewAllRooms.ViewAllActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -98,8 +100,17 @@ public class MapFragment extends Fragment
     private RelativeLayout RR_map;
     private TextView txt_list;
     private TextView txt_map;
+    private ProgressBar progressBar;
+    private RelativeLayout RR_filter;
+    private RelativeLayout RR_Search;
 
-    
+    GPSTracker gpsTracker;
+    private String latitude ="";
+    private String longitude ="";
+    private SessionManager sessionManager;
+
+    private ArrayList<MapModelData> modelList_NearBy = new ArrayList<>();
+
 
     public MapFragment() {
         // Required empty public constructor
@@ -118,22 +129,67 @@ public class MapFragment extends Fragment
         RR_list=view.findViewById(R.id.RR_list);
         txt_list=view.findViewById(R.id.txt_list);
         txt_map=view.findViewById(R.id.txt_map);
+        progressBar=view.findViewById(R.id.progressBar);
+        RR_Search=view.findViewById(R.id.RR_Search);
+        RR_filter=view.findViewById(R.id.RR_filter);
+        sessionManager = new SessionManager(getActivity());
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
         mapFrag = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         mapFrag.getMapAsync(this);
 
 
+        RR_Search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //Intent intent = new Intent(getActivity(), SearchActivity.class);
+                Intent intent=new Intent(getActivity(), ViewAllActivity.class);
+                intent.putExtra("type","");
+                intent.putExtra("less_price","");
+                intent.putExtra("private_room","");
+                intent.putExtra("air_room","");
+                intent.putExtra("heating","");
+                startActivity(intent);
+            }
+        });
+        RR_filter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), FilterActivity.class);
+                startActivity(intent);
+            }
+        });
 
         RR_list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 fragment = new HomeFragment();
                 loadFragment(fragment);
-
             }
         });
+
+        gpsTracker=new GPSTracker(getActivity());
+
+        if(gpsTracker.canGetLocation()){
+
+            latitude = String.valueOf(gpsTracker.getLatitude());
+            longitude = String.valueOf(gpsTracker.getLongitude());
+
+        }else{
+
+            gpsTracker.showSettingsAlert();
+        }
+
+
+        if (sessionManager.isNetworkAvailable()) {
+            progressBar.setVisibility(View.VISIBLE);
+            callNearByRoom("22.7177","75.8545");
+
+        }else {
+            Toast.makeText(getActivity(), getResources().getString(R.string.checkInternet), Toast.LENGTH_SHORT).show();
+        }
+
 
         return view;
     }
@@ -151,6 +207,9 @@ public class MapFragment extends Fragment
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
         mGoogleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+
+
+        mGoogleMap.getUiSettings().setMyLocationButtonEnabled(false);
 
         mLocationRequest = new LocationRequest();
         mLocationRequest.setInterval(120000); // two minute interval
@@ -208,18 +267,20 @@ public class MapFragment extends Fragment
                 mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 11));
 
 
-                mGoogleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+              /*  mGoogleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
                     @Override
                     public void onMapClick(LatLng point) {
 
-                        latLng = new LatLng(location.getLatitude(), location.getLongitude());
-                        MarkerOptions markerOptions = new MarkerOptions();
+
+                     MarkerOptions markerOptions = new MarkerOptions();
                         markerOptions.position(latLng);
                         markerOptions.title("Current Position");
                         markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
                         mCurrLocationMarker = mGoogleMap.addMarker(markerOptions);
                         //move map camera
-                        mGoogleMap.clear();
+                      mGoogleMap.clear();
+
+                     latLng = new LatLng(location.getLatitude(), location.getLongitude());
 
                         mGoogleMap.addMarker(new MarkerOptions()
                                 .position(point)
@@ -229,7 +290,7 @@ public class MapFragment extends Fragment
 
                         mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 11));
                     }
-                });
+                });*/
 
             }
         }
@@ -312,5 +373,62 @@ public class MapFragment extends Fragment
         transaction.replace(R.id.fragment_homeContainer, fragment);
         transaction.addToBackStack("home");
         transaction.commit();
+    }
+
+    public void callNearByRoom(String latitude, String longitude) {
+
+        Call<MapModel> call = RetrofitClients
+                .getInstance()
+                .getApi()
+                .nearByRoom(latitude,longitude);
+
+        call.enqueue(new Callback<MapModel>() {
+            @Override
+            public void onResponse(Call<MapModel> call, Response<MapModel> response) {
+                try {
+
+                    progressBar.setVisibility(View.GONE);
+
+                    MapModel myclass= response.body();
+
+                    String status = myclass.getStatus();
+                    String result = myclass.getMessage();
+
+                    if (status.equalsIgnoreCase("1")){
+
+
+                        modelList_NearBy = (ArrayList<MapModelData>) myclass.getResult();
+
+                        for(int i=0;i<modelList_NearBy.size();i++)
+                        {
+                            latLng = new LatLng(Double.parseDouble(modelList_NearBy.get(i).getLat()), Double.parseDouble(modelList_NearBy.get(i).getLon()));
+
+                            mGoogleMap.addMarker(new MarkerOptions()
+                                    .position(latLng)
+                                    .title(modelList_NearBy.get(i).getCity()+"\n"+"Distance :"+modelList_NearBy.get(i).getCity())
+                                    .icon(BitmapDescriptorFactory.fromResource(R.mipmap.map)));
+
+                            mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12));
+
+                        }
+
+
+                    }else {
+
+                        Toast.makeText(getActivity(), result, Toast.LENGTH_SHORT).show();
+
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MapModel> call, Throwable t) {
+                progressBar.setVisibility(View.GONE);
+                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 }

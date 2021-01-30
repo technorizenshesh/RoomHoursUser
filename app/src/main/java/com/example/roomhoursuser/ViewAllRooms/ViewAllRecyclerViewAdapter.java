@@ -178,7 +178,8 @@ public class ViewAllRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVie
 
                         Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
 
-                        ((ViewAllActivity)mContext).callRoomDetailsApi();
+                        ((ViewAllActivity)mContext).filterApi("","","","","","");
+
 
                     }else {
 
@@ -186,7 +187,9 @@ public class ViewAllRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVie
 
                     }
                 } catch (Exception e) {
-                    ((ViewAllActivity)mContext).callRoomDetailsApi();
+
+                    ((ViewAllActivity)mContext).filterApi("","","","","","");
+
                     e.printStackTrace();
                 }
             }

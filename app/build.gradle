@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.roomhoursuser"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -58,6 +58,8 @@ dependencies {
     implementation 'com.karumi:dexter:6.0.1'
 
 
+    implementation 'vn.nms.dseekbar:DMSeekBar:1.0.0'
+    implementation 'com.braintreepayments:card-form:5.0.0'
     //Google Login
     //noinspection GradleCompatible
     implementation 'com.google.firebase:firebase-messaging:9.6.1'
@@ -78,6 +80,9 @@ dependencies {
     implementation 'com.google.android.gms:play-services-maps:11.8.0'
     implementation 'com.google.android.gms:play-services-location:11.8.0'
     implementation 'com.android.support:multidex:1.0.3'
+
+    //Scan Card
+    implementation 'io.card:android-sdk:5.5.0'
 
 }
 apply plugin: 'com.google.gms.google-services'

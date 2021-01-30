@@ -20,6 +20,9 @@ public class SplashScreen extends AppCompatActivity {
     private int SPLASH_SCREEN_TIMEOUT =3000;
 
     String User_id;
+    GPSTracker gpsTracker;
+    private String latitude ="";
+    private String longitude ="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,19 @@ public class SplashScreen extends AppCompatActivity {
             window.setStatusBarColor(ContextCompat.getColor(
                     this, R.color.mehroon));
         }
+
+        gpsTracker=new GPSTracker(SplashScreen.this);
+
+        if(gpsTracker.canGetLocation()){
+
+            latitude = String.valueOf(gpsTracker.getLatitude());
+            longitude = String.valueOf(gpsTracker.getLongitude());
+
+        }else{
+
+            gpsTracker.showSettingsAlert();
+        }
+
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {

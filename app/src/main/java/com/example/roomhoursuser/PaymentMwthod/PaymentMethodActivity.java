@@ -24,7 +24,8 @@ public class PaymentMethodActivity extends AppCompatActivity {
     private TextView txt_price;
     private ImageView img_card_one;
     private ImageView img_cash_one;
-    String PaymentType ="";
+    String PaymentType ="Card";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

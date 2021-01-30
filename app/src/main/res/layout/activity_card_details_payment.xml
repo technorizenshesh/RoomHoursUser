@@ -9,6 +9,19 @@
     tools:context=".PaymentMwthod.PaymentMethodActivity">
 
 
+    <ProgressBar
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:id="@+id/progressBar"
+        android:background="@drawable/progresh_background"
+        android:elevation="@dimen/padding6"
+        android:padding="@dimen/padding5"
+        android:indeterminate="true"
+        android:indeterminateTintMode="src_atop"
+        android:indeterminateTint="@color/colorPrimary"
+        android:visibility="gone"/>
+
     <ScrollView
         android:layout_above="@+id/txt_debit"
         android:layout_width="match_parent"
@@ -56,7 +69,7 @@
                                 android:textStyle="bold"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Add Credit Card" />
+                                android:text="Add Card" />
 
                         </RelativeLayout>
 
@@ -71,19 +84,16 @@
                             android:layout_height="wrap_content"
                             android:text="Card holder Name" />
 
-                        <EditText
-                            android:inputType="text"
-                            android:padding="@dimen/padding10"
-                            android:text="John smith"
+                        <com.braintreepayments.cardform.view.CardholderNameEditText
+                            android:id="@+id/et_card_holder_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/padding50"
                             android:layout_marginTop="@dimen/padding10"
                             android:layout_marginLeft="@dimen/padding15"
                             android:layout_marginRight="@dimen/padding15"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/padding50"
-                            android:layout_toLeftOf="@+id/RR_filter"
-                            android:background="@drawable/roundbttn_white_one">
-
-                        </EditText>
+                            android:background="@drawable/roundbttn_white_one"
+                            android:hint="Card Holder Name"
+                            android:padding="8dp" />
 
                         <TextView
                             android:textStyle="bold"
@@ -96,21 +106,17 @@
                             android:layout_height="wrap_content"
                             android:text="Card  Number" />
 
-                        <EditText
-                            android:padding="@dimen/padding10"
-                            android:maxLength="16"
-                            android:text="848484841648486"
-                            android:inputType="number"
-                            android:singleLine="true"
+                        <com.braintreepayments.cardform.view.CardEditText
+                            android:id="@+id/et_card_number"
+                            android:background="@drawable/roundbttn_white_one"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/padding50"
+                            android:hint="Card Number"
                             android:layout_marginTop="@dimen/padding10"
                             android:layout_marginLeft="@dimen/padding15"
                             android:layout_marginRight="@dimen/padding15"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/padding50"
-                            android:layout_toLeftOf="@+id/RR_filter"
-                            android:background="@drawable/roundbttn_white_one">
+                            android:padding="8dp" />
 
-                        </EditText>
 
                         <LinearLayout
                             android:weightSum="2"
@@ -137,22 +143,21 @@
                                     android:textSize="@dimen/padding16"
                                     android:textStyle="bold" />
 
-                                <EditText
+                                <com.braintreepayments.cardform.view.ExpirationDateEditText
+                                    android:id="@+id/et_card_expiry_date"
                                     android:layout_width="match_parent"
-                                    android:layout_height="@dimen/padding50"
-                                    android:layout_marginTop="@dimen/padding10"
-                                    android:layout_marginRight="@dimen/padding15"
-                                    android:layout_toLeftOf="@+id/RR_filter"
+                                    android:layout_height="match_parent"
                                     android:background="@drawable/roundbttn_white_one"
-                                    android:inputType="number"
-                                    android:maxLength="5"
-                                    android:padding="@dimen/padding10"
-                                    android:singleLine="true">
+                                    android:hint="Card Expiry"
+                                    android:layout_marginRight="@dimen/padding10"
+                                    android:layout_marginTop="@dimen/padding10"
+                                    android:textSize="@dimen/padding13"
+                                    android:padding="8dp" />
 
-                                </EditText>
                             </LinearLayout>
 
                             <LinearLayout
+                                android:visibility="invisible"
                                 android:layout_weight="1"
                                 android:orientation="vertical"
                                 android:layout_width="match_parent"
@@ -176,7 +181,8 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="@dimen/padding50"
                                     android:layout_toLeftOf="@+id/RR_filter"
-                                    android:background="@drawable/roundbttn_white_one">
+                                    android:background="@drawable/roundbttn_white_one"
+                                    >
 
                                 </EditText>
                             </LinearLayout>
@@ -188,6 +194,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/LL_scan"
                         android:orientation="horizontal"
                         android:layout_marginTop="-20dp"
                         android:layout_marginLeft="@dimen/padding15"
@@ -221,6 +228,7 @@
 
 
                     <RelativeLayout
+                        android:id="@+id/RR_save_card"
                         android:layout_marginTop="@dimen/padding30"
                         android:layout_marginRight="@dimen/padding30"
                         android:layout_marginLeft="@dimen/padding30"

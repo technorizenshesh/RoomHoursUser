@@ -6,6 +6,7 @@ import com.example.roomhoursuser.CheckInScreen.HomeDetailsModel;
 import com.example.roomhoursuser.FavFragmen.ApiModel.GetFavModel;
 import com.example.roomhoursuser.HomeFragment.HomeModel;
 import com.example.roomhoursuser.LoginScreen.LoginModel;
+import com.example.roomhoursuser.MapScreen.MapModel;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -20,6 +21,7 @@ import retrofit2.http.Part;
 public interface Api {
 
     String signUp ="signUp";
+    String add_payment ="add_payment";
     String login ="login";
     String SocialloginApi ="social_login";
     String forgotPassword ="forgetPassword";
@@ -35,7 +37,9 @@ public interface Api {
     String addLike = "addLikes";
     String dislike = "unLikeById";
     String get_room_details = "get_room_details";
+    String room_filter = "room_filter";
     String best_match_room = "best_match_room";
+    String nearByRoom = "nearByRoom";
     String add_fav_room = "add_fav_room";
     String add_ChnagePassword = "change_password";
     String get_favorite = "get_favorite";
@@ -57,65 +61,75 @@ public interface Api {
             @Part MultipartBody.Part part
     );
 
-   @FormUrlEncoded
-   @POST(signUp)
+    @FormUrlEncoded
+    @POST(signUp)
     Call<LoginModel>signupApi(
-           @Field("first_name") String first_name,
-           @Field("email") String email,
-           @Field("password") String password,
-           @Field("register_id") String register_id,
-           @Field("lat") String lat,
-           @Field("lon") String lon,
-           @Field("type") String type
-   );
+            @Field("first_name") String first_name,
+            @Field("email") String email,
+            @Field("password") String password,
+            @Field("register_id") String register_id,
+            @Field("lat") String lat,
+            @Field("lon") String lon,
+            @Field("type") String type
+    );
 
-   @FormUrlEncoded
-   @POST(login)
+
+    @FormUrlEncoded
+    @POST(add_payment)
+    Call<ResponseBody>add_payment(
+            @Field("user_id") String user_id,
+            @Field("CardholderName") String CardholderName,
+            @Field("cardnumber") String cardnumber,
+            @Field("expirydate") String expirydate
+    );
+
+    @FormUrlEncoded
+    @POST(login)
     Call<ResponseBody>loginApi(
-           @Field("email") String email,
-           @Field("password") String password,
-           @Field("register_id") String register_id,
-           @Field("lat") String lat,
-           @Field("lon") String lon,
-           @Field("type") String type
+            @Field("email") String email,
+            @Field("password") String password,
+            @Field("register_id") String register_id,
+            @Field("lat") String lat,
+            @Field("lon") String lon,
+            @Field("type") String type
 
-   );
+    );
 
-   @FormUrlEncoded
-   @POST(SocialloginApi)
+    @FormUrlEncoded
+    @POST(SocialloginApi)
     Call<ResponseBody>SocialloginApi(
-           @Field("first_name") String first_name,
-           @Field("email") String email,
-           @Field("register_id") String register_id,
-           @Field("social_id") String social_id,
-           @Field("lat") String lat,
-           @Field("lon") String lon
+            @Field("first_name") String first_name,
+            @Field("email") String email,
+            @Field("register_id") String register_id,
+            @Field("social_id") String social_id,
+            @Field("lat") String lat,
+            @Field("lon") String lon
 
-   );
+    );
 
-  @FormUrlEncoded
-   @POST(getProfile)
+    @FormUrlEncoded
+    @POST(getProfile)
     Call<LoginModel>getProfile(
-           @Field("user_id") String user_id
-   );
+            @Field("user_id") String user_id
+    );
 
-  @FormUrlEncoded
-   @POST(get_BankDetails)
+    @FormUrlEncoded
+    @POST(get_BankDetails)
     Call<BankModel>get_BankDetails(
-           @Field("user_id") String user_id
-   );
+            @Field("user_id") String user_id
+    );
 
-   @FormUrlEncoded
+    @FormUrlEncoded
     @POST(forgotPassword)
     Call<ResponseBody> forgotPasswordApi(
-           @Field("email") String email
-   );
+            @Field("email") String email
+    );
 
-   @FormUrlEncoded
+    @FormUrlEncoded
     @POST(logout)
     Call<ResponseBody>logoutApi(
-           @Field("user_id") String userID
-   );
+            @Field("user_id") String userID
+    );
 
 
 
@@ -166,21 +180,39 @@ public interface Api {
     );
 
     @FormUrlEncoded
+    @POST(room_filter)
+    Call<HomeModel>room_filter(
+            @Field("lat") String lat,
+            @Field("lon") String lon,
+            @Field("less_price") String less_price,
+            @Field("private_room") String private_room,
+            @Field("air_room") String air_room,
+            @Field("heating") String heating
+    );
+
+    @FormUrlEncoded
     @POST(best_match_room)
     Call<HomeModel>best_match_room(
             @Field("lat") String lat,
             @Field("lon") String lon
     );
 
+    @FormUrlEncoded
+    @POST(nearByRoom)
+    Call<MapModel>nearByRoom(
+            @Field("lat") String lat,
+            @Field("lon") String lon
+    );
 
-  @FormUrlEncoded
+
+    @FormUrlEncoded
     @POST(add_fav_room)
     Call<ResponseBody>add_fav_room(
             @Field("user_id") String user_id,
             @Field("room_id") String room_id
     );
 
-@FormUrlEncoded
+    @FormUrlEncoded
     @POST(add_ChnagePassword)
     Call<ResponseBody>add_ChnagePassword(
             @Field("user_id") String user_id,

@@ -28,6 +28,7 @@
         </TextView>
 
         <TextView
+            android:id="@+id/txt_clear_all"
             android:layout_toLeftOf="@+id/RR_filter"
             android:layout_margin="@dimen/padding10"
             android:layout_centerVertical="true"
@@ -74,7 +75,6 @@
         >
 
         <LinearLayout
-
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -99,19 +99,27 @@
                 android:layout_height="wrap_content">
 
                 <LinearLayout
+                    android:id="@+id/RR_less_price"
+                    android:layout_marginBottom="@dimen/padding20"
+                    android:layout_marginTop="@dimen/padding20"
                     android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     >
 
-                    <CheckBox
-                        android:backgroundTint="@color/mehroon"
-                        android:layout_width="@dimen/padding50"
-                        android:layout_height="@dimen/padding50"
+                    <ImageView
+                        android:id="@+id/img_lessPrice"
+                        android:tint="@color/mehroon"
+                        android:layout_gravity="center"
+                        android:src="@drawable/check_icon_new"
+                        android:layout_width="@dimen/padding30"
+                        android:layout_height="@dimen/padding30"
                         android:button="@null"
-                        android:background="?android:attr/listChoiceIndicatorMultiple"/>
+                    />
 
                     <TextView
+                        android:layout_marginLeft="@dimen/padding10"
+                        android:layout_gravity="center"
                         android:textColor="@color/black"
                         android:textStyle="bold"
                         android:textSize="@dimen/padding18"
@@ -124,23 +132,31 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/RR_nearBy_price"
+                    android:layout_marginBottom="@dimen/padding20"
+                    android:layout_marginTop="@dimen/padding10"
                     android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     >
 
-                    <CheckBox
-                        android:backgroundTint="@color/mehroon"
-                        android:layout_width="@dimen/padding50"
-                        android:layout_height="@dimen/padding50"
+                    <ImageView
+                        android:id="@+id/img_near"
+                        android:tint="@color/mehroon"
+                        android:layout_gravity="center"
+                        android:src="@drawable/check_icon_new"
+                        android:layout_width="@dimen/padding30"
+                        android:layout_height="@dimen/padding30"
                         android:button="@null"
-                        android:background="?android:attr/listChoiceIndicatorMultiple"/>
+                        />
 
                     <TextView
+                        android:layout_marginLeft="@dimen/padding10"
+                        android:layout_gravity="center"
                         android:textColor="@color/black"
                         android:textStyle="bold"
                         android:textSize="@dimen/padding18"
-                        android:text="Nearest to me First"
+                        android:text="Nearrest to me First"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         >
@@ -149,6 +165,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -188,6 +205,7 @@
             </TextView>
 
             <TextView
+                android:visibility="gone"
                 android:layout_marginLeft="@dimen/padding10"
                 android:layout_marginTop="@dimen/padding10"
                 android:layout_below="@+id/RR_toolbar"
@@ -199,6 +217,7 @@
             </TextView>
 
             <SeekBar
+                android:visibility="gone"
                 android:theme="@style/SeekBarColor"
                 android:thumbTint="@color/red"
                 android:layout_marginBottom="@dimen/padding10"
@@ -228,8 +247,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:numStars="5"
-                android:stepSize="0.1"
-                android:isIndicator="true" />
+             />
 
             <TextView
                 android:layout_marginLeft="@dimen/padding10"
@@ -240,6 +258,7 @@
                 android:text="Services"
                 android:textColor="@color/black"
                 android:textSize="@dimen/padding20">
+
             </TextView>
 
             <LinearLayout
@@ -248,8 +267,8 @@
                 android:layout_height="70dp">
 
                 <RelativeLayout
+                    android:id="@+id/RR_private_bathroom"
                     android:layout_weight="1"
-                    android:backgroundTint="@color/Mehroon_one"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toLeftOf="@+id/RR_filter"
@@ -268,6 +287,7 @@
                     </ImageView>
 
                     <TextView
+                        android:id="@+id/txt_bedroom"
                         android:gravity="center"
                         android:textStyle="bold"
                         android:layout_marginLeft="@dimen/padding5"
@@ -276,12 +296,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Private bathroom in the room"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/padding14" />
 
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:visibility="invisible"
                     android:layout_marginLeft="@dimen/padding10"
                     android:layout_weight="1"
                     android:backgroundTint="@color/white"
@@ -323,8 +344,8 @@
                 android:layout_height="70dp">
 
                 <RelativeLayout
+                    android:id="@+id/RR_air_condition"
                     android:layout_weight="1"
-                    android:backgroundTint="@color/white"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toLeftOf="@+id/RR_filter"
@@ -343,6 +364,7 @@
                     </ImageView>
 
                     <TextView
+                        android:id="@+id/txt_air_condition"
                         android:textStyle="bold"
                         android:layout_marginLeft="@dimen/padding5"
                         android:layout_centerVertical="true"
@@ -356,6 +378,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:visibility="invisible"
                     android:layout_marginLeft="@dimen/padding10"
                     android:layout_weight="1"
                     android:backgroundTint="@color/Mehroon_one"
@@ -400,8 +423,8 @@
                 android:layout_height="70dp">
 
                 <RelativeLayout
+                    android:id="@+id/RR_heating"
                     android:layout_weight="1"
-                    android:backgroundTint="@color/white"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toLeftOf="@+id/RR_filter"
@@ -420,13 +443,14 @@
                     </ImageView>
 
                     <TextView
+                        android:id="@+id/txt_heating"
                         android:textStyle="bold"
                         android:layout_marginLeft="@dimen/padding5"
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@+id/img_bathroom"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Air Conditioned"
+                        android:text="Heating"
                         android:textColor="@color/black"
                         android:textSize="@dimen/padding16" />
 

@@ -162,7 +162,6 @@ public class FavFragment extends Fragment {
                 progressBar.setVisibility(View.GONE);
                 txt_emty.setVisibility(View.VISIBLE);
                 RR_fav.setVisibility(View.GONE);
-                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

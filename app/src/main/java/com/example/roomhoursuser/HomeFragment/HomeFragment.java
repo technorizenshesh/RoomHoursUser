@@ -96,7 +96,12 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getActivity(), ViewAllActivity.class);
+                Intent intent=new Intent(getActivity(), ViewAllActivity.class);
+                intent.putExtra("type","");
+                intent.putExtra("less_price","");
+                intent.putExtra("private_room","");
+                intent.putExtra("air_room","");
+                intent.putExtra("heating","");
                 startActivity(intent);
             }
         });
@@ -129,7 +134,12 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
 
                 //Intent intent = new Intent(getActivity(), SearchActivity.class);
-                Intent intent = new Intent(getActivity(), ViewAllActivity.class);
+                Intent intent=new Intent(getActivity(), ViewAllActivity.class);
+                intent.putExtra("type","");
+                intent.putExtra("less_price","");
+                intent.putExtra("private_room","");
+                intent.putExtra("air_room","");
+                intent.putExtra("heating","");
                 startActivity(intent);
             }
         });
