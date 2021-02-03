@@ -62,12 +62,14 @@ public class ChooseDateTime extends AppCompatActivity {
     String NewDate;
     String  DateInnew;
     Calendar c1;
+    Calendar c2;
     DatePickerDialog datePickerDialog;
 
     int Check_In_Year;
     int Check_In_month;
     int Check_In_day;
 
+    long ConvertDate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -177,6 +179,7 @@ public class ChooseDateTime extends AppCompatActivity {
                                 view.setVisibility(View.VISIBLE);
                              //String   Date = (dayOfMonth+"-"+(monthOfYear+1)+"-"+year);
                                 DateIn = (year+"-"+(monthOfYear+1)+"-"+dayOfMonth);
+                             String DateIn1= (year+"-"+(monthOfYear+1)+"-"+dayOfMonth);
                                 DateInNew = (year+""+(monthOfYear+1)+""+dayOfMonth);
 
                                 Check_In_Year = year;
@@ -184,6 +187,8 @@ public class ChooseDateTime extends AppCompatActivity {
                                 Check_In_day = dayOfMonth;
                                 DateInnew= String.valueOf(year+monthOfYear+dayOfMonth);
                                 String NewDate = getDate(DateIn);
+                                
+                                ConvertDate =  milliseconds(DateIn1);
 
                                 txt_date_in.setText(NewDate);
 
@@ -201,9 +206,34 @@ public class ChooseDateTime extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(!DateIn.equalsIgnoreCase(""))
-                {
-                    DatePickerDialog   datePickerDialog = new DatePickerDialog(ChooseDateTime.this,
+                datePickerDialog = new DatePickerDialog(ChooseDateTime.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+                                //  RR_booking_Date.setVisibility( View.VISIBLE );
+                                //  txt_time.setVisibility(View.VISIBLE);
+                                view.setVisibility(View.VISIBLE);
+                                //String   Date = (dayOfMonth+"-"+(monthOfYear+1)+"-"+year);
+                                DateOut = (year+"-"+(monthOfYear+1)+"-"+dayOfMonth);
+                                DateInNew = (year+""+(monthOfYear+1)+""+dayOfMonth);
+
+                                DateInnew= String.valueOf(year+monthOfYear+dayOfMonth);
+
+                                String NewDate = getDate(DateOut);
+
+                                txt_chck_out.setText(NewDate);
+
+                            }
+                        }, Check_In_Year, Check_In_month, Check_In_day);
+
+                datePickerDialog.getDatePicker().setMinDate(ConvertDate);
+
+                datePickerDialog.show();
+
+
+
+             /*   DatePickerDialog   datePickerDialog = new DatePickerDialog(ChooseDateTime.this,
                             new DatePickerDialog.OnDateSetListener() {
                                 @Override
                                 public void onDateSet(DatePicker view, int year,
@@ -217,14 +247,10 @@ public class ChooseDateTime extends AppCompatActivity {
                                 }
                             }, Check_In_Year, Check_In_month, Check_In_day);
 
-                    datePickerDialog.getDatePicker().setMinDate(c1.getTimeInMillis()-1000);
+                datePickerDialog.getDatePicker().setMinDate(ConvertDate-1000);
 
-                    datePickerDialog.show();
+                    datePickerDialog.show();*/
 
-                }else
-                {
-                    Toast.makeText(ChooseDateTime.this, "Please Select Check in Date..", Toast.LENGTH_SHORT).show();
-                }
             }
         });
 
@@ -328,6 +354,28 @@ public class ChooseDateTime extends AppCompatActivity {
         calendar.set(Calendar.MONTH, month - 1);
         calendar.set(Calendar.YEAR, year);
         return calendar.getTimeInMillis();
+    }
+
+
+
+    public long milliseconds(String date)
+    {
+        //String date_ = date;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try
+        {
+            Date mDate = sdf.parse(date);
+            long timeInMilliseconds = mDate.getTime();
+            System.out.println("Date in milli :: " + timeInMilliseconds);
+            return timeInMilliseconds;
+        }
+        catch (ParseException e)
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return 0;
     }
 
 }

@@ -71,7 +71,9 @@
         <activity
             android:name=".ChooseDateTime.ChooseDateTime"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+            </activity>
         <activity
             android:name=".DetailsRoom.DetailsActivity"
             android:screenOrientation="portrait"
