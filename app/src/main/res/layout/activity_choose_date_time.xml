@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F1F2FA"
+     android:background="@color/grayLight"
     android:padding="@dimen/padding10"
     tools:context=".ChooseDateTime.ChooseDateTime"
     >
@@ -38,11 +38,12 @@
                     android:layout_height="wrap_content">
 
                     <TextView
+                        android:gravity="left"
                         android:id="@+id/txt_day_check_in"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
-                        android:text="Day Check In"
+                        android:text="@string/day_check_in"
                         android:textSize="17dp"
                         >
                     </TextView>
@@ -64,7 +65,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="15dp"
-                            android:text="Select Date"
+                            android:text="@string/select_date"
                             android:textSize="17dp"
                             >
                         </TextView>
@@ -102,11 +103,12 @@
                     android:layout_height="wrap_content">
 
                     <TextView
+                        android:gravity="left"
                         android:id="@+id/txt_day_check_out"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
-                        android:text="Day Check out"
+                        android:text="@string/day_check_out"
                         android:textSize="17dp"
                         >
                     </TextView>
@@ -127,7 +129,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="15dp"
-                            android:text="Select Date"
+                            android:text="@string/select_date"
                             android:textSize="17dp"
                             >
                         </TextView>
@@ -183,13 +185,14 @@
             </ImageView>
 
             <TextView
+                android:gravity="left"
                 android:textColor="@color/black"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:text="I want rent for hour"
+                android:text="@string/i_want_rent_for_hour"
                 android:textSize="@dimen/padding20"
                 >
             </TextView>
@@ -216,7 +219,8 @@
                 android:layout_height="match_parent"
                 >
 
-                <RelativeLayout
+                <LinearLayout
+                    android:orientation="vertical"
                     android:id="@+id/RR_one_hour"
                     android:layout_gravity="center"
                     android:layout_width="65dp"
@@ -227,18 +231,33 @@
 
                     <TextView
                         android:id="@+id/txt_one"
+                        android:layout_centerHorizontal="false"
+                        android:layout_marginTop="@dimen/padding5"
+                        android:layout_gravity="center"
                         android:textColor="@color/white"
-                        android:layout_centerInParent="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="1h"
-                        android:textSize="@dimen/padding18"
+                        android:textSize="@dimen/padding16"
                         >
                     </TextView>
 
-                </RelativeLayout>
+                    <TextView
+                        android:id="@+id/txt_one_hour"
+                        android:layout_marginTop="@dimen/padding5"
+                        android:layout_gravity="center"
+                        android:textColor="@color/white"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$50.0"
+                        android:textSize="@dimen/padding16"
+                        >
+                    </TextView>
 
-                <RelativeLayout
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
                     android:id="@+id/RR_two_hour"
                     android:layout_marginLeft="@dimen/padding10"
                     android:layout_gravity="center"
@@ -247,21 +266,36 @@
                     android:layout_toLeftOf="@+id/RR_filter"
                     android:background="@drawable/roundbttn_white_one">
 
+
                     <TextView
                         android:id="@+id/txt_two"
+                        android:layout_marginTop="@dimen/padding5"
+                        android:layout_gravity="center"
                         android:textColor="@color/black"
-                        android:layout_centerInParent="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="2h"
-                        android:textSize="@dimen/padding18"
+                        android:textSize="@dimen/padding16"
+                        >
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/txt_two_hour"
+                        android:layout_marginTop="@dimen/padding5"
+                        android:layout_gravity="center"
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="#90.0"
+                        android:textSize="@dimen/padding16"
                         >
                     </TextView>
 
 
-                </RelativeLayout>
+                </LinearLayout>
 
-                <RelativeLayout
+                <LinearLayout
+                    android:orientation="vertical"
                     android:id="@+id/RR_three_hour"
                     android:layout_marginLeft="@dimen/padding10"
                     android:layout_gravity="center"
@@ -271,22 +305,33 @@
                     android:background="@drawable/roundbttn_white_one">
 
                     <TextView
-                        android:layout_centerInParent="true"
-                        android:layout_centerHorizontal="true"
                         android:id="@+id/txt_three"
+                        android:layout_marginTop="@dimen/padding5"
+                        android:layout_gravity="center"
+                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
                         android:text="3h"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/padding18"
+                        android:textSize="@dimen/padding16"
                         >
-
                     </TextView>
 
-                </RelativeLayout>
+                    <TextView
+                        android:id="@+id/txt_three_hour"
+                        android:layout_marginTop="@dimen/padding5"
+                        android:layout_gravity="center"
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$130.0"
+                        android:textSize="@dimen/padding16"
+                        >
+                    </TextView>
 
-                <RelativeLayout
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
                     android:id="@+id/RR_four_sex_hour"
                     android:layout_marginLeft="@dimen/padding10"
                     android:layout_gravity="center"
@@ -296,16 +341,30 @@
                     android:background="@drawable/roundbttn_white_one">
 
                     <TextView
-                        android:singleLine="true"
-                        android:layout_centerInParent="true"
                         android:id="@+id/txt_four"
+                        android:layout_marginTop="@dimen/padding5"
+                        android:layout_gravity="center"
+                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="4-6h"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/padding18"></TextView>
+                        android:text="4h"
+                        android:textSize="@dimen/padding16"
+                        >
+                    </TextView>
 
-                </RelativeLayout>
+                    <TextView
+                        android:id="@+id/txt_four_hour"
+                        android:layout_marginTop="@dimen/padding5"
+                        android:layout_gravity="center"
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$170.0"
+                        android:textSize="@dimen/padding16"
+                        >
+                    </TextView>
+
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -390,6 +449,7 @@
                     </ImageView>
 
                     <TextView
+                        android:gravity="left"
                         android:layout_marginLeft="@dimen/padding20"
                         android:textSize="@dimen/padding16"
                         android:textStyle="bold"
@@ -397,7 +457,7 @@
                         android:textColor="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Next"
+                        android:text="@string/next"
                         />
 
                 </RelativeLayout>

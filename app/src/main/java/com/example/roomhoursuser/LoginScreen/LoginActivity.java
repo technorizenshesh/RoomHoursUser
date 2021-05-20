@@ -55,6 +55,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -99,6 +100,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     GPSTracker gpsTracker;
     String latitude ="";
     String longitude ="";
+    String token="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,9 +114,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             window.setStatusBarColor(ContextCompat.getColor(
                     this, R.color.mehroon));
         }
+        
         progressBar = findViewById(R.id.progressBar);
-
-
         try {
             if (ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
                 ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 101);
@@ -138,6 +139,20 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         edt_User = findViewById(R.id.edt_User);
         RR_faceBook_login=findViewById(R.id.RR_faceBook_login);
         loginButton = findViewById(R.id.connectWithFbButton);
+
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w(TAG, "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
+                        // Get new FCM registration token
+                        token = task.getResult();
+                        Log.e("token",token);
+                    }
+                });
 
         //android device Id
         android_id = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
@@ -369,7 +384,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         Call<ResponseBody> call = RetrofitClients
                 .getInstance()
                 .getApi()
-                .loginApi(email,password,android_id,"42","3242","User");
+                .loginApi(email,password,token,latitude,longitude,"User");
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -431,7 +446,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         Call<ResponseBody> call = RetrofitClients
                 .getInstance()
                 .getApi()
-                .SocialloginApi(FirstName,email,register_id,socialId,latitude,longitude);
+                .SocialloginApi(FirstName,email,token,socialId,latitude,longitude);
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override

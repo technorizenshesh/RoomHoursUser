@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+
 import androidx.fragment.app.Fragment;
 
 import com.example.roomhoursuser.LoginScreen.LoginActivity;
@@ -19,7 +21,7 @@ import com.example.roomhoursuser.R;
 public class SliderThreeFragment extends Fragment {
 
     private View view;
-    private ImageView img_skip_three;
+    private RelativeLayout img_skip_three;
 
     public SliderThreeFragment() {
         // Required empty public constructor

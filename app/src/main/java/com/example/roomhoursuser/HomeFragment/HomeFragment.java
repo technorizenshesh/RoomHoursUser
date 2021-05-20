@@ -78,6 +78,9 @@ public class HomeFragment extends Fragment {
     String latitude ="";
     String longitude ="";
 
+    TextView txt_room_emty;
+    TextView txt_room_emty_one;
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -190,6 +193,8 @@ public class HomeFragment extends Fragment {
         txt_list=view.findViewById(R.id.txt_list);
         txt_map=view.findViewById(R.id.txt_map);
         txt_view_all=view.findViewById(R.id.txt_view_all);
+        txt_room_emty=view.findViewById(R.id.txt_room_emty);
+        txt_room_emty_one=view.findViewById(R.id.txt_room_emty_one);
     }
 
     @Override
@@ -257,7 +262,6 @@ public class HomeFragment extends Fragment {
                 .getInstance()
                 .getApi()
                 .get_room_details(User_Id);
-
         call.enqueue(new Callback<HomeModel>() {
             @Override
             public void onResponse(Call<HomeModel> call, Response<HomeModel> response) {
@@ -271,17 +275,18 @@ public class HomeFragment extends Fragment {
                     String result = myclass.getMessage();
 
                     if (status.equalsIgnoreCase("1")){
-
+                        txt_room_emty.setVisibility(View.GONE);
                         modelList = (ArrayList<HomeDataModel>) myclass.getResult();
 
                         setAdapter(modelList);
 
                     }else {
-
+                        txt_room_emty.setVisibility(View.VISIBLE);
                         Toast.makeText(getActivity(), result, Toast.LENGTH_SHORT).show();
 
                     }
                 } catch (Exception e) {
+                    txt_room_emty.setVisibility(View.VISIBLE);
                     e.printStackTrace();
                 }
             }
@@ -289,6 +294,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onFailure(Call<HomeModel> call, Throwable t) {
                 progressBar.setVisibility(View.GONE);
+                txt_room_emty.setVisibility(View.VISIBLE);
                 Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -318,16 +324,19 @@ public class HomeFragment extends Fragment {
 
                     if (status.equalsIgnoreCase("1")){
 
+                        txt_room_emty_one.setVisibility(View.GONE);
+
                         modelList_best_match = (ArrayList<HomeDataModel>) myclass.getResult();
 
                         setAdapterBestMatch(modelList_best_match);
 
                     }else {
-
-                        Toast.makeText(getActivity(), result, Toast.LENGTH_SHORT).show();
+                        txt_room_emty_one.setVisibility(View.VISIBLE);
+                       // Toast.makeText(getActivity(), result, Toast.LENGTH_SHORT).show();
 
                     }
                 } catch (Exception e) {
+                    txt_room_emty_one.setVisibility(View.VISIBLE);
                     e.printStackTrace();
                 }
             }
@@ -335,7 +344,8 @@ public class HomeFragment extends Fragment {
             @Override
             public void onFailure(Call<HomeModel> call, Throwable t) {
                 progressBar.setVisibility(View.GONE);
-                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                txt_room_emty_one.setVisibility(View.VISIBLE);
+              //  Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 

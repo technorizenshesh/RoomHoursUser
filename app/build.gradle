@@ -42,6 +42,9 @@ dependencies {
    // implementation 'com.google.android.gms:play-services-auth:11.6.0'
     implementation 'com.github.bumptech.glide:glide:3.7.0'
     implementation 'com.facebook.android:facebook-android-sdk:5.11.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    implementation 'com.hbb20:ccp:2.3.9'
     //firebase related dependencies
     // compile 'com.google.firebase:firebase-database:9.6.1'
     //noinspection GradleCompatible
@@ -57,7 +60,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
     implementation 'com.karumi:dexter:6.0.1'
 
-
+    implementation 'com.makeramen:roundedimageview:2.3.0'
     implementation 'vn.nms.dseekbar:DMSeekBar:1.0.0'
     implementation 'com.braintreepayments:card-form:5.0.0'
     //Google Login
@@ -83,6 +86,7 @@ dependencies {
 
     //Scan Card
     implementation 'io.card:android-sdk:5.5.0'
+//margin
 
 }
 apply plugin: 'com.google.gms.google-services'

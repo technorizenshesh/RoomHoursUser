@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F1F2FA"
+     android:background="@color/grayLight"
     android:padding="@dimen/padding10"
     tools:context=".CheckInScreen.CheckInActivity"
     >
@@ -174,7 +174,7 @@
                             android:textStyle="bold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="$571 .0" />
+                            android:text="€571 .0" />
 
                         <RelativeLayout
                             android:layout_marginTop="@dimen/padding5"
@@ -190,12 +190,13 @@
 
 
                             <TextView
+                                android:gravity="left"
                                 android:textStyle="bold"
                                 android:layout_centerHorizontal="true"
                                 android:layout_centerVertical="true"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Check in"
+                                android:text="@string/check_in"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/padding16" />
 
@@ -240,7 +241,7 @@
                                 android:textColor="@color/black"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="1h"
+                                android:text="@string/_1h"
                                 android:textSize="@dimen/padding16"
                                 >
                             </TextView>
@@ -252,7 +253,7 @@
                                 android:textColor="@color/black"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="$50.0"
+                                android:text="€50.0"
                                 android:textSize="@dimen/padding16"
                                 >
                             </TextView>
@@ -276,7 +277,7 @@
                                 android:textColor="@color/black"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="2h"
+                                android:text="@string/_2h"
                                 android:textSize="@dimen/padding16"
                                 >
                             </TextView>
@@ -288,7 +289,7 @@
                                 android:textColor="@color/black"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="#90.0"
+                                android:text="€90.0"
                                 android:textSize="@dimen/padding16"
                                 >
                             </TextView>
@@ -307,12 +308,13 @@
 
 
                             <TextView
+                                android:gravity="left"
                                 android:layout_marginTop="@dimen/padding5"
                                 android:layout_gravity="center"
                                 android:textColor="@color/black"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="3h"
+                                android:text="@string/_3h"
                                 android:textSize="@dimen/padding16"
                                 >
                             </TextView>
@@ -324,7 +326,7 @@
                                 android:textColor="@color/black"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="$130.0"
+                                android:text="€130.0"
                                 android:textSize="@dimen/padding16"
                                 >
                             </TextView>
@@ -343,12 +345,13 @@
 
 
                             <TextView
+                                android:gravity="left"
                                 android:layout_marginTop="@dimen/padding5"
                                 android:layout_gravity="center"
                                 android:textColor="@color/black"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="4h"
+                                android:text="@string/_4h"
                                 android:textSize="@dimen/padding16"
                                 >
                             </TextView>
@@ -360,7 +363,7 @@
                                 android:textColor="@color/black"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="$170.0"
+                                android:text="€170.0"
                                 android:textSize="@dimen/padding16"
                                 >
                             </TextView>
@@ -375,6 +378,8 @@
                 </RelativeLayout>
 
                 <TextView
+                    android:gravity="left"
+                    android:layout_gravity="left"
                     android:layout_marginRight="@dimen/padding10"
                     android:layout_marginTop="@dimen/padding10"
                     android:textColor="@color/black"
@@ -384,7 +389,7 @@
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Information" />
+                    android:text="@string/information" />
 
                 <TextView
                     android:id="@+id/txt_description"
@@ -405,6 +410,7 @@
                     android:layout_height="wrap_content">
 
                     <TextView
+                        android:gravity="left"
                         android:textColor="@color/black"
                         android:layout_alignParentLeft="true"
                         android:layout_marginLeft="@dimen/padding5"
@@ -413,9 +419,10 @@
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Review" />
+                        android:text="@string/review" />
 
                     <TextView
+                        android:gravity="left"
                         android:textColor="@color/red"
                         android:layout_alignParentRight="true"
                         android:layout_marginLeft="@dimen/padding5"
@@ -423,7 +430,7 @@
                         android:textSize="@dimen/padding16"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="View All " />
+                        android:text="@string/view_all" />
 
                 </RelativeLayout>
 
@@ -472,7 +479,7 @@
                             android:textStyle="bold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Recommended" />
+                            android:text="@string/recommended" />
 
                         <TextView
                             android:layout_alignParentLeft="true"
@@ -546,6 +553,7 @@
                     >
 
                     <TextView
+                        android:gravity="left"
                         android:layout_marginBottom="@dimen/padding5"
                         android:id="@+id/txt_location"
                         android:textColor="@color/black"
@@ -556,7 +564,7 @@
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Location" />
+                        android:text="@string/location" />
 
                     <fragment
                         android:layout_below="@+id/txt_location"
@@ -580,6 +588,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -624,6 +633,7 @@
 
 
                 <TextView
+                    android:visibility="gone"
                     android:textColor="@color/black"
                     android:layout_alignParentLeft="true"
                     android:singleLine="true"
@@ -634,6 +644,7 @@
                     android:text="Related Property" />
 
                 <RelativeLayout
+                    android:visibility="gone"
                     android:id="@+id/RR_recommended"
                     android:layout_below="@+id/txt_Recommended"
                     android:layout_width="wrap_content"

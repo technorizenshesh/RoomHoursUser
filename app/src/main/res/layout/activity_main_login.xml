@@ -24,7 +24,7 @@
 
     <com.facebook.login.widget.LoginButton
         android:visibility="gone"
-        android:id="@+id/connectWithFbButton"
+        android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -49,7 +49,6 @@
                 android:layout_height="150dp"
                 android:layout_centerHorizontal="true"
                 android:src="@mipmap/logo_one">
-
             </ImageView>
 
 
@@ -60,7 +59,7 @@
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="WELCOME!"
+                android:text="@string/welcome"
                 android:textColor="@color/white"
                 android:textSize="@dimen/padding35"/>
 
@@ -74,7 +73,7 @@
                 android:layout_marginTop="@dimen/padding30"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dummy text is test that is used in the \n publishing industry or by web designers to"
+                android:text="@string/dummy_text_is_test_that_is_used_in_the_n_publishing_industry_or_by_web_designers_to"
                 android:textColor="@color/white"
                 android:textSize="@dimen/padding14"/>
 
@@ -106,14 +105,16 @@
                     </ImageView>
 
                     <TextView
+                        android:gravity="center"
+                        android:layout_toRightOf="@+id/img_mail"
                         android:layout_centerHorizontal="true"
-                        android:textSize="18dp"
+                        android:textSize="@dimen/_14sdp"
                         android:textStyle="bold"
                         android:layout_centerVertical="true"
                         android:textColor="@color/white"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Continue with Email"
+                        android:text="@string/continue_with_email"
                         />
 
                 </RelativeLayout>
@@ -141,13 +142,13 @@
 
                 <TextView
                     android:layout_centerHorizontal="true"
-                    android:textSize="18dp"
+                    android:textSize="@dimen/_14sdp"
                     android:textStyle="bold"
                     android:layout_centerVertical="true"
                     android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Continue with Facebook"
+                    android:text="@string/continue_with_facebook"
                     />
 
             </RelativeLayout>
@@ -173,13 +174,51 @@
 
                 <TextView
                     android:layout_centerHorizontal="true"
-                    android:textSize="18dp"
+                    android:textSize="@dimen/_14sdp"
                     android:textStyle="bold"
                     android:layout_centerVertical="true"
                     android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Continue with Google"
+                    android:text="@string/continue_with_google"
+                    />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:padding="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/padding20"
+                android:layout_gravity="center"
+                android:id="@+id/RR_login_one"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:layout_centerVertical="true"
+                    android:id="@+id/txt1"
+                    android:textSize="@dimen/padding16"
+                    android:textColor="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/do_you_already_have_an_account"
+                    />
+
+                <TextView
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:id="@+id/txt_allready_registed"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/txt1"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/padding20"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/log_in_o"
                     />
 
             </RelativeLayout>

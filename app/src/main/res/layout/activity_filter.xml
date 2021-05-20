@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FilterScreen.FilterActivity"
-    android:background="#F1F2FA"
+     android:background="@color/grayLight"
     android:padding="@dimen/padding10"
     >
 
@@ -17,29 +17,33 @@
         >
 
         <TextView
+            android:gravity="left"
             android:layout_margin="@dimen/padding10"
             android:textStyle="bold"
             android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Filters"
+            android:text="@string/filters"
             android:textColor="@color/black"
             android:textSize="26dp">
         </TextView>
 
         <TextView
+            android:gravity="left"
+            android:layout_alignParentRight="true"
             android:id="@+id/txt_clear_all"
             android:layout_toLeftOf="@+id/RR_filter"
             android:layout_margin="@dimen/padding10"
             android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Clear all"
+            android:text="@string/clear_all"
             android:textColor="@color/black"
             android:textSize="@dimen/padding20">
         </TextView>
 
         <RelativeLayout
+            android:visibility="gone"
             android:id="@+id/RR_filter"
             android:layout_width="45dp"
             android:layout_height="45dp"
@@ -75,18 +79,21 @@
         >
 
         <LinearLayout
+            android:layout_marginBottom="@dimen/_20sdp"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
 
             <TextView
+                android:gravity="left"
+                android:layout_gravity="left"
                 android:layout_marginLeft="@dimen/padding10"
                 android:layout_marginTop="@dimen/padding10"
                 android:id="@+id/txt_sort_by"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sort by"
+                android:text="@string/sort_by"
                 android:textColor="@color/black"
                 android:textSize="@dimen/padding20">
             </TextView>
@@ -118,12 +125,13 @@
                     />
 
                     <TextView
+                        android:gravity="left"
                         android:layout_marginLeft="@dimen/padding10"
                         android:layout_gravity="center"
                         android:textColor="@color/black"
                         android:textStyle="bold"
                         android:textSize="@dimen/padding18"
-                        android:text="Less Price First"
+                        android:text="@string/less_price_first"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         >
@@ -151,12 +159,13 @@
                         />
 
                     <TextView
+                        android:gravity="left"
                         android:layout_marginLeft="@dimen/padding10"
                         android:layout_gravity="center"
                         android:textColor="@color/black"
                         android:textStyle="bold"
                         android:textSize="@dimen/padding18"
-                        android:text="Nearrest to me First"
+                        android:text="@string/nearrest_to_me_first"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         >
@@ -193,12 +202,14 @@
             </LinearLayout>
 
             <TextView
+                android:gravity="left"
+                android:layout_gravity="left"
                 android:layout_marginLeft="@dimen/padding10"
                 android:layout_marginTop="@dimen/padding10"
                 android:layout_below="@+id/RR_toolbar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Filter    "
+                android:text="@string/filter"
                 android:textColor="@color/black"
                 android:textSize="@dimen/padding20">
 
@@ -234,7 +245,7 @@
                 android:layout_below="@+id/RR_toolbar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Reting"
+                android:text="@string/reting"
                 android:textColor="@color/black"
                 android:textSize="@dimen/padding20">
             </TextView>
@@ -255,39 +266,182 @@
                 android:layout_below="@+id/RR_toolbar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Services"
+                android:text="@string/services"
                 android:textColor="@color/black"
                 android:textSize="@dimen/padding20">
 
             </TextView>
 
+
             <LinearLayout
+                android:layout_marginRight="@dimen/_5sdp"
+                android:layout_marginLeft="@dimen/_5sdp"
                 android:layout_marginTop="@dimen/padding10"
                 android:layout_width="match_parent"
-                android:layout_height="70dp">
+                android:layout_height="@dimen/_120sdp">
 
-                <RelativeLayout
+                <LinearLayout
+                    android:elevation="@dimen/_6sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:orientation="vertical"
                     android:id="@+id/RR_private_bathroom"
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toLeftOf="@+id/RR_filter"
-                    android:background="@drawable/roundbttn_white">
+                    android:background="@drawable/black_border_new">
 
 
                     <ImageView
-                        android:id="@+id/img_bathroom"
-                        android:src="@drawable/google_icon"
-                        android:layout_marginLeft="@dimen/padding10"
+                        android:id="@+id/img_private"
+                        android:layout_width="133dp"
+                        android:layout_height="@dimen/_60sdp"
                         android:layout_centerVertical="true"
-                        android:layout_width="@dimen/padding25"
-                        android:layout_height="@dimen/padding25"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/padding10"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/private_img_one">
+
+                    </ImageView>
+
+                    <TextView
+                        android:padding="2sp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:id="@+id/txt_bedroom"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/private_bathroom_in_the_room"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14sdp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:elevation="@dimen/_6sdp"
+                    android:id="@+id/RR_heating"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toLeftOf="@+id/RR_filter"
+                    android:background="@drawable/black_border_new">
+
+
+                    <ImageView
+                        android:id="@+id/img_heating"
+                        android:layout_marginTop="@dimen/padding10"
+                        android:layout_gravity="center"
+                        android:src="@drawable/heating_img"
+                        android:scaleType="fitCenter"
+                        android:layout_centerVertical="true"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="@dimen/_60sdp"
+                        >
+                    </ImageView>
+
+                    <TextView
+                        android:id="@+id/txt_heating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/padding5"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_toRightOf="@+id/img_bathroom"
+                        android:gravity="center"
+                        android:text="@string/heating"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_16sdp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/padding10"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_120sdp">
+
+                <LinearLayout
+                    android:elevation="@dimen/_6sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:orientation="vertical"
+                    android:id="@+id/RR_air_condition"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toLeftOf="@+id/RR_filter"
+                    android:background="@drawable/black_border_new">
+
+
+
+                    <ImageView
+                        android:id="@+id/img_air"
+                        android:layout_marginTop="@dimen/padding10"
+                        android:layout_gravity="center"
+                        android:src="@drawable/aircondition"
+                        android:scaleType="fitCenter"
+                        android:layout_centerVertical="true"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="@dimen/_60sdp"
                         >
 
                     </ImageView>
 
                     <TextView
-                        android:id="@+id/txt_bedroom"
+                        android:padding="2sp"
+                        android:id="@+id/txt_air_condition"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/air_conditioned"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14sdp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/LL_wifi"
+                    android:elevation="@dimen/_6sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toLeftOf="@+id/RR_filter"
+                    android:background="@drawable/black_border_new">
+
+
+                    <ImageView
+                        android:id="@+id/img_wifi"
+                        android:layout_marginTop="@dimen/padding10"
+                        android:layout_gravity="center"
+                        android:src="@drawable/wifi"
+                        android:scaleType="fitCenter"
+                        android:layout_centerVertical="true"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="@dimen/_60sdp"
+                        >
+
+                    </ImageView>
+
+                    <TextView
+                        android:id="@+id/txt_wiif"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/_10sdp"
                         android:gravity="center"
                         android:textStyle="bold"
                         android:layout_marginLeft="@dimen/padding5"
@@ -295,56 +449,21 @@
                         android:layout_toRightOf="@+id/img_bathroom"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Private bathroom in the room"
+                        android:text="WiFi"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/padding14" />
+                        android:textSize="@dimen/_16sdp" />
 
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:visibility="invisible"
-                    android:layout_marginLeft="@dimen/padding10"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/white"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_toLeftOf="@+id/RR_filter"
-                    android:background="@drawable/roundbttn_white">
-
-
-                    <ImageView
-                        android:id="@+id/img_auto"
-                        android:src="@drawable/google_icon"
-                        android:layout_marginLeft="@dimen/padding10"
-                        android:layout_centerVertical="true"
-                        android:layout_width="@dimen/padding25"
-                        android:layout_height="@dimen/padding25"
-                        >
-
-                    </ImageView>
-
-                    <TextView
-                        android:textStyle="bold"
-                        android:layout_marginLeft="@dimen/padding5"
-                        android:layout_centerVertical="true"
-                        android:layout_toRightOf="@+id/img_auto"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Automatic Booking"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/padding14" />
-
-                </RelativeLayout>
+                </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
+                android:visibility="gone"
                 android:layout_marginTop="@dimen/padding10"
                 android:layout_width="match_parent"
                 android:layout_height="70dp">
 
                 <RelativeLayout
-                    android:id="@+id/RR_air_condition"
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -364,14 +483,14 @@
                     </ImageView>
 
                     <TextView
-                        android:id="@+id/txt_air_condition"
+                        android:gravity="left"
                         android:textStyle="bold"
                         android:layout_marginLeft="@dimen/padding5"
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@+id/img_bathroom"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Air Conditioned"
+                        android:text="@string/air_conditioned"
                         android:textColor="@color/black"
                         android:textSize="@dimen/padding14" />
 
@@ -418,12 +537,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:visibility="gone"
                 android:layout_marginTop="@dimen/padding10"
                 android:layout_width="match_parent"
                 android:layout_height="70dp">
 
                 <RelativeLayout
-                    android:id="@+id/RR_heating"
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -432,7 +551,6 @@
 
 
                     <ImageView
-                        android:id="@+id/img_bathroom"
                         android:src="@drawable/google_icon"
                         android:layout_marginLeft="@dimen/padding10"
                         android:layout_centerVertical="true"
@@ -443,14 +561,13 @@
                     </ImageView>
 
                     <TextView
-                        android:id="@+id/txt_heating"
+                        android:gravity="left"
                         android:textStyle="bold"
                         android:layout_marginLeft="@dimen/padding5"
                         android:layout_centerVertical="true"
-                        android:layout_toRightOf="@+id/img_bathroom"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Heating"
+                        android:text="@string/heating"
                         android:textColor="@color/black"
                         android:textSize="@dimen/padding16" />
 
@@ -519,7 +636,7 @@
             android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Apply Filter"
+            android:text="@string/apply_filter"
             android:textColor="@color/white"
             android:textSize="@dimen/padding18" />
 

@@ -98,9 +98,7 @@ public class BestMatchRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
             });
 
         }
-
     }
-
 
     @Override
     public int getItemCount() {

@@ -1,67 +1,152 @@
 package com.example.roomhoursuser.MessageFragment;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.roomhoursuser.ChatActivity;
-import com.example.roomhoursuser.HomeFragment.BestMatchModel;
-import com.example.roomhoursuser.HomeFragment.BestMatchRecyclerViewAdapter;
+import com.example.roomhoursuser.FragmentListener;
+import com.example.roomhoursuser.Preference;
 import com.example.roomhoursuser.R;
+import com.example.roomhoursuser.Utills.RetrofitClients;
+import com.example.roomhoursuser.Utills.SessionManager;
 
 import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+
 public class MessageFragment extends Fragment {
 
-   private View view;
-   private RelativeLayout RR_msg;
+    FragmentListener listener;
+    ImageView iv_back;
+    CardView message_card1;
 
-    public MessageFragment() {
-        // Required empty public constructor
+   private RecyclerView recycler_view_chat;
+    ProgressBar progressBar;
+    private SessionManager sessionManager;
+
+    ArrayList<ChatConversationData> arrayList = new ArrayList<>();
+    ChatList_Adapter mAdapter;
+
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        // view = inflater.inflate(R.layout.fragment_main, container, false);
-        view = inflater.inflate(R.layout.fragment_message, container, false);
+        View view= inflater.inflate(R.layout.fragment_message, container, false);
 
-        findView();
-        RR_msg.setOnClickListener(new View.OnClickListener() {
+
+      //  message_card1=view.findViewById(R.id.message_card1);
+        recycler_view_chat = view.findViewById(R.id.recycler_view_chat);
+        progressBar = view.findViewById(R.id.progressBar);
+        sessionManager = new SessionManager(getActivity());
+
+      /*  message_card1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
+                //listener.click(new HomeFragment(listener));
+                startActivity(new Intent(getActivity(), ChatActivity.class));
+            }
+        });*/
 
-                Intent intent=new Intent(getActivity(), ChatActivity.class);
-                startActivity(intent);
+
+        if (sessionManager.isNetworkAvailable()) {
+
+            progressBar.setVisibility(View.VISIBLE);
+
+            getConversationDetails();
+
+        }else {
+
+            Toast.makeText(getActivity(), R.string.checkInternet, Toast.LENGTH_SHORT).show();
+
+        }
+
+        return  view;
+    }
+
+    private void setAdapter(ArrayList<ChatConversationData> arrayList) {
+        mAdapter = new ChatList_Adapter(getActivity(),arrayList);
+        recycler_view_chat.setHasFixedSize(true);
+        // use a linear layout manager
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        recycler_view_chat.setLayoutManager(linearLayoutManager);
+        recycler_view_chat.setAdapter(mAdapter);
+
+        mAdapter.SetOnItemClickListener(new ChatList_Adapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position, ChatConversationData model) {
+
+                Preference.save(getActivity(),Preference.KEY_ReceiverId,model.getReceiverId());
+                Preference.save(getActivity(), Preference.KEY_SenderId,model.getSenderId());
+                Preference.save(getActivity(), Preference.KEY_student_Name,model.getFirstName());
+                startActivity(new Intent(getActivity(), ChatActivity.class));
+
+            }
+        });
+    }
+
+    private void getConversationDetails() {
+
+       //String ReceiverId = Preference.get(getActivity(),Preference.KEY_USER_ID);
+       String ReceiverId ="6";
+
+        Call<ChatConversation> call = RetrofitClients
+                .getInstance()
+                .getApi()
+                .get_conversation_detail(ReceiverId);
+        call.enqueue(new Callback<ChatConversation>() {
+            @Override
+            public void onResponse(Call<ChatConversation> call, Response<ChatConversation> response) {
+
+                progressBar.setVisibility(View.GONE);
+
+                try {
+
+                    ChatConversation finallyPr = response.body();
+
+                    String status   = finallyPr.getStatus ();
+                    String message = finallyPr.getMessage();
+
+                    if (status.equalsIgnoreCase("1")) {
+
+                        arrayList = (ArrayList<ChatConversationData>) finallyPr.getResult();
+
+                        setAdapter(arrayList);
+
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ChatConversation> call, Throwable t) {
+                progressBar.setVisibility(View.GONE);
             }
         });
 
-        return view;
     }
-
-    private void findView() {
-        RR_msg =view.findViewById(R.id.RR_msg);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-        //showMarker();
-
 
 
 }

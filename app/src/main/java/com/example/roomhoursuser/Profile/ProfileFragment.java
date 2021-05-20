@@ -1,30 +1,46 @@
 package com.example.roomhoursuser.Profile;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.example.roomhoursuser.BankScreen.BankDetailsActivity;
 import com.example.roomhoursuser.ChangePassword.ChangePasswordActivity;
+import com.example.roomhoursuser.HomeScreen.HomeActivity;
 import com.example.roomhoursuser.LoginScreen.LoginActivity;
 import com.example.roomhoursuser.LoginScreen.LoginModel;
 import com.example.roomhoursuser.Preference;
 import com.example.roomhoursuser.R;
+import com.example.roomhoursuser.SelectLaguage.SlectLanugage;
 import com.example.roomhoursuser.Utills.RetrofitClients;
 import com.example.roomhoursuser.Utills.SessionManager;
+
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -40,6 +56,7 @@ public class ProfileFragment extends Fragment {
     private SessionManager sessionManager;
     private RelativeLayout RR_bank_details;
     private RelativeLayout RR_chnagePassword;
+    private RelativeLayout RR_slectet_language;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -59,6 +76,7 @@ public class ProfileFragment extends Fragment {
         txt_email =view.findViewById(R.id.txt_email);
         txt_logout =view.findViewById(R.id.txt_logout);
         RR_chnagePassword =view.findViewById(R.id.RR_chnagePassword);
+        RR_slectet_language =view.findViewById(R.id.RR_slectet_language);
 
         //android device Id
         android_id = Settings.Secure.getString(getActivity().getContentResolver(), Settings.Secure.ANDROID_ID);
@@ -100,6 +118,15 @@ public class ProfileFragment extends Fragment {
 
                 Intent intent=new Intent(getActivity(), ChangePasswordActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        RR_slectet_language.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                languageAlert(v);
+
             }
         });
 
@@ -157,6 +184,93 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+    }
+    public void languageAlert(View view) {
+
+        final AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
+        View mView = getLayoutInflater().inflate(R.layout.language_alert, null);
+
+        CardView btn_okay = mView.findViewById(R.id.btn_okay);
+
+        final RadioButton english_btn = mView.findViewById(R.id.english_btn);
+        final RadioButton  spanish_btn = mView.findViewById(R.id.spanish_btn);
+        RadioGroup radioGroup = mView.findViewById(R.id.radio);
+
+
+        alert.setView(mView);
+        final AlertDialog alertDialog = alert.create();
+        alertDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        alertDialog.setCanceledOnTouchOutside(false);
+
+        String lang= Preference.get(getActivity(),Preference.KEY_language);
+
+      //  String lang=PrefManager.get(mContext,"lang");
+        Log.e("lang",lang);
+
+        if (lang.equals("es")&&lang!=null){
+            english_btn.setChecked(false);
+            spanish_btn.setChecked(true);
+        }else
+        {
+            Preference.save(getActivity(),Preference.KEY_language,"en");
+
+            english_btn.setChecked(true);
+            spanish_btn.setChecked(false);
+            updateResources(getActivity(),"en");
+
+        }
+
+
+        english_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                Toast.makeText(getApplicationContext(), "Select English", Toast.LENGTH_LONG).show();
+                updateResources(getActivity(),"en");
+                Preference.save(getActivity(),Preference.KEY_language,"en");
+                english_btn.setChecked(true);
+                spanish_btn.setChecked(false);
+            }
+        });
+        spanish_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                Toast.makeText(getApplicationContext(), "Select Spanish" , Toast.LENGTH_LONG).show();
+                updateResources(getActivity(),"es");
+                Preference.save(getActivity(),Preference.KEY_language,"es");
+                english_btn.setChecked(false);
+                spanish_btn.setChecked(true);
+
+            }
+        });
+
+
+        btn_okay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+                startActivity(new Intent(getActivity(), HomeActivity.class));
+            }
+        });
+
+        alertDialog.show();
+
+    }
+
+    private static void updateResources(Context context, String language) {
+
+        Locale locale = new Locale(language);
+        Locale.setDefault(locale);
+
+        Resources resources = context.getResources();
+
+        Configuration configuration = resources.getConfiguration();
+        configuration.locale = locale;
+
+        resources.updateConfiguration(configuration, resources.getDisplayMetrics());
     }
 
 

@@ -1,6 +1,7 @@
 package com.example.roomhoursuser.CheckInScreen;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,6 +19,8 @@ import android.os.Looper;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -25,6 +28,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.roomhoursuser.AllImageView.AllImageViewpager;
 import com.example.roomhoursuser.ChooseDateTime.ChooseDateTime;
 import com.example.roomhoursuser.HomeFragment.BestMatchRecyclerViewAdapter;
 import com.example.roomhoursuser.HomeFragment.HomeDataModel;
@@ -91,9 +95,21 @@ public class CheckInActivity extends AppCompatActivity implements OnMapReadyCall
     private TextView txt_description;
     private TextView txt_totl_price;
 
+    CardView card_img;
+
+    RelativeLayout rr_super_item;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Window window = getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.setStatusBarColor(ContextCompat.getColor(
+                    this, R.color.mehroon));
+        }
+
         setContentView(R.layout.activity_check_in);
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
@@ -104,6 +120,8 @@ public class CheckInActivity extends AppCompatActivity implements OnMapReadyCall
         RR_check_in_one=findViewById(R.id.RR_check_in_one);
         RR_check_in_two=findViewById(R.id.RR_check_in_two);
         progressBar=findViewById(R.id.progressBar);
+        card_img=findViewById(R.id.card_img);
+        rr_super_item=findViewById(R.id.rr_super_item);
 
         img_room=findViewById(R.id.img_room);
         txt_roomName=findViewById(R.id.txt_roomName);
@@ -115,13 +133,38 @@ public class CheckInActivity extends AppCompatActivity implements OnMapReadyCall
         txt_four_hour=findViewById(R.id.txt_four_hour);
         txt_description=findViewById(R.id.txt_description);
         txt_totl_price=findViewById(R.id.txt_totl_price);
+        img_room=findViewById(R.id.img_room);
 
         //android device Id
         android_id = Settings.Secure.getString(CheckInActivity.this.getContentResolver(), Settings.Secure.ANDROID_ID);
         sessionManager = new SessionManager(CheckInActivity.this);
 
-        //setAdapter();
+        card_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
+
+        rr_super_item.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent =new Intent(CheckInActivity.this, AllImageViewpager.class);
+                startActivity(intent);
+            }
+        });
+
+        img_room.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent =new Intent(CheckInActivity.this, AllImageViewpager.class);
+                startActivity(intent);
+            }
+        });
+
+        //setAdapter();
         RR_check_in_one.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -212,7 +255,7 @@ public class CheckInActivity extends AppCompatActivity implements OnMapReadyCall
                                     .into(img_room);*/
                         }
 
-                       String  TotalPrice = "$"+myclass.getResult().getRecommendedPrice();
+                       String  TotalPrice = "€"+myclass.getResult().getRecommendedPrice();
 
                         Preference.save(CheckInActivity.this,Preference.KEY_payment_total,TotalPrice);
                         txt_roomName.setText(myclass.getResult().getTitle());
@@ -220,10 +263,22 @@ public class CheckInActivity extends AppCompatActivity implements OnMapReadyCall
                         txt_price.setText(TotalPrice);
                         txt_description.setText(myclass.getResult().getDescription());
 
-                        txt_one_hour.setText("$"+myclass.getResult().getPriceOneHour());
-                        txt_two_hour.setText("$"+myclass.getResult().getPriceTwoHours());
-                        txt_three_hour.setText("$"+myclass.getResult().getPriceThreeHour());
-                        txt_four_hour.setText("$"+myclass.getResult().getPriceFourSexHour());
+                        String oneHour ="€"+myclass.getResult().getPriceOneHour();
+                        String twoHour ="€"+myclass.getResult().getPriceTwoHours();
+                        String threeHour ="€"+myclass.getResult().getPriceThreeHour();
+                        String fourHour ="€"+myclass.getResult().getPriceFourSexHour();
+
+                        txt_one_hour.setText(oneHour);
+                        txt_two_hour.setText(twoHour);
+                        txt_three_hour.setText(threeHour);
+                        txt_four_hour.setText(fourHour);
+
+                        Preference.save(CheckInActivity.this,Preference.KEY_oneHr,oneHour);
+                        Preference.save(CheckInActivity.this,Preference.KEY_twoHr,twoHour);
+                        Preference.save(CheckInActivity.this,Preference.KEY_threeHr,threeHour);
+                        Preference.save(CheckInActivity.this,Preference.KEY_fourHr,fourHour);
+
+
 
                     }else {
 

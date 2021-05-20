@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+     android:background="@color/grayLight"
     >
 
     <ProgressBar
@@ -109,7 +110,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/padding10"
-                    android:text="Map"
+                    android:text="@string/map_one"
                     android:textColor="@color/white"
                     android:textSize="@dimen/padding22" />
 
@@ -130,7 +131,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-                    android:text="List"
+                    android:text="@string/list"
                     android:textColor="@color/black"
                     android:textSize="@dimen/padding22" />
 

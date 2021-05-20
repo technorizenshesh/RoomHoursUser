@@ -1,14 +1,17 @@
 package com.example.roomhoursuser.ChooseDateTime;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
@@ -20,6 +23,7 @@ import android.widget.Toast;
 
 import com.example.roomhoursuser.CheckInScreen.CheckInActivity;
 import com.example.roomhoursuser.PaymentMwthod.PaymentMethodActivity;
+import com.example.roomhoursuser.Preference;
 import com.example.roomhoursuser.R;
 
 import java.text.ParseException;
@@ -32,18 +36,22 @@ import java.util.TimeZone;
 public class ChooseDateTime extends AppCompatActivity {
 
     private RelativeLayout RR_next;
-    private RelativeLayout RR_one_hour;
-    private RelativeLayout RR_two_hour;
-    private RelativeLayout RR_three_hour;
-    private RelativeLayout RR_four_sex_hour;
+    private LinearLayout RR_one_hour;
+    private LinearLayout RR_two_hour;
+    private LinearLayout RR_three_hour;
+    private LinearLayout RR_four_sex_hour;
 
     private RelativeLayout RR_date_checkIn;
     private RelativeLayout RR_date_checkOut;
 
     private TextView txt_one;
+    private TextView txt_one_hour;
     private TextView txt_two;
+    private TextView txt_two_hour;
     private TextView txt_three;
+    private TextView txt_three_hour;
     private TextView txt_four;
+    private TextView txt_four_hour;
 
     private TextView txt_date_in;
     private TextView txt_chck_out;
@@ -70,20 +78,44 @@ public class ChooseDateTime extends AppCompatActivity {
     int Check_In_day;
 
     long ConvertDate;
+    String TotalAmt="";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Window window = getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.setStatusBarColor(ContextCompat.getColor(
+                    this, R.color.mehroon));
+        }
+
         setContentView(R.layout.activity_choose_date_time);
+
+        TotalAmt =  Preference.get(ChooseDateTime.this,Preference.KEY_payment_total);
+        String OneHr =Preference.get(ChooseDateTime.this,Preference.KEY_oneHr);
+        String Twor =Preference.get(ChooseDateTime.this,Preference.KEY_twoHr);
+        String ThreeHr =Preference.get(ChooseDateTime.this,Preference.KEY_threeHr);
+        String FourHr =Preference.get(ChooseDateTime.this,Preference.KEY_fourHr);
+
 
         RR_next=findViewById(R.id.RR_next);
         RR_one_hour=findViewById(R.id.RR_one_hour);
         RR_two_hour=findViewById(R.id.RR_two_hour);
         RR_three_hour=findViewById(R.id.RR_three_hour);
         RR_four_sex_hour=findViewById(R.id.RR_four_sex_hour);
+
         txt_one=findViewById(R.id.txt_one);
+        txt_one_hour=findViewById(R.id.txt_one_hour);
         txt_two=findViewById(R.id.txt_two);
+        txt_two_hour=findViewById(R.id.txt_two_hour);
         txt_three=findViewById(R.id.txt_three);
+        txt_three_hour=findViewById(R.id.txt_three_hour);
         txt_four=findViewById(R.id.txt_four);
+        txt_four_hour=findViewById(R.id.txt_four_hour);
+
+
         RR_date_checkIn=findViewById(R.id.RR_date_checkIn);
         RR_date_checkOut=findViewById(R.id.RR_date_checkOut);
         txt_date_in=findViewById(R.id.txt_date_in);
@@ -93,6 +125,7 @@ public class ChooseDateTime extends AppCompatActivity {
         RR_selected_hour=findViewById(R.id.RR_selected_hour);
         RR_chekcout=findViewById(R.id.RR_chekcout);
         c1 = Calendar.getInstance();
+
         check_for_hour.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
         {
             @Override
@@ -103,9 +136,9 @@ public class ChooseDateTime extends AppCompatActivity {
                     RR_selected_hour.setVisibility(View.VISIBLE);
                     RR_chekcout.setVisibility(View.INVISIBLE);
 
-
                 }else
                 {
+                    TotalAmt = Preference.get(ChooseDateTime.this,Preference.KEY_oneHr);
                     RR_selected_hour.setVisibility(View.GONE);
                     RR_chekcout.setVisibility(View.VISIBLE);
                 }
@@ -132,6 +165,8 @@ public class ChooseDateTime extends AppCompatActivity {
 
                 }else
                 {
+                    Toast.makeText(ChooseDateTime.this, ""+TotalAmt, Toast.LENGTH_SHORT).show();
+
                     Intent intent = new Intent(ChooseDateTime.this, PaymentMethodActivity.class);
                     startActivity(intent);
                 }
@@ -151,6 +186,8 @@ public class ChooseDateTime extends AppCompatActivity {
 
                 }else
                 {
+                    TotalAmt = Preference.get(ChooseDateTime.this,Preference.KEY_oneHr);
+
                     check_for_hour.setChecked(true);
                     RR_selected_hour.setVisibility(View.VISIBLE);
                     RR_chekcout.setVisibility(View.INVISIBLE);
@@ -192,6 +229,9 @@ public class ChooseDateTime extends AppCompatActivity {
 
                                 txt_date_in.setText(NewDate);
 
+
+                                Preference.save(ChooseDateTime.this,Preference.KEY_CheckInDate,NewDate);
+
                             }
                         }, mYear, mMonth, mDay);
 
@@ -223,6 +263,8 @@ public class ChooseDateTime extends AppCompatActivity {
                                 String NewDate = getDate(DateOut);
 
                                 txt_chck_out.setText(NewDate);
+
+                                Preference.save(ChooseDateTime.this,Preference.KEY_CheckOutDate,NewDate);
 
                             }
                         }, Check_In_Year, Check_In_month, Check_In_day);
@@ -260,11 +302,16 @@ public class ChooseDateTime extends AppCompatActivity {
             public void onClick(View v) {
 
                 RentForHour ="1hr";
+                TotalAmt = Preference.get(ChooseDateTime.this,Preference.KEY_oneHr);
 
                 txt_one.setTextColor(getResources().getColor(R.color.white));
+                txt_one_hour.setTextColor(getResources().getColor(R.color.white));
                 txt_two.setTextColor(getResources().getColor(R.color.black));
+                txt_two_hour.setTextColor(getResources().getColor(R.color.black));
                 txt_three.setTextColor(getResources().getColor(R.color.black));
+                txt_three_hour.setTextColor(getResources().getColor(R.color.black));
                 txt_four.setTextColor(getResources().getColor(R.color.black));
+                txt_four_hour.setTextColor(getResources().getColor(R.color.black));
 
                 RR_one_hour.setBackgroundResource(R.drawable.roundbttn_white_one_yellow);
                 RR_two_hour.setBackgroundResource(R.drawable.roundbttn_white_one);
@@ -279,10 +326,16 @@ public class ChooseDateTime extends AppCompatActivity {
 
                 RentForHour ="2hr";
 
+                TotalAmt = Preference.get(ChooseDateTime.this,Preference.KEY_twoHr);
+
                 txt_one.setTextColor(getResources().getColor(R.color.black));
+                txt_one_hour.setTextColor(getResources().getColor(R.color.black));
                 txt_two.setTextColor(getResources().getColor(R.color.white));
+                txt_two_hour.setTextColor(getResources().getColor(R.color.white));
                 txt_three.setTextColor(getResources().getColor(R.color.black));
+                txt_three_hour.setTextColor(getResources().getColor(R.color.black));
                 txt_four.setTextColor(getResources().getColor(R.color.black));
+                txt_four_hour.setTextColor(getResources().getColor(R.color.black));
 
                 RR_one_hour.setBackgroundResource(R.drawable.roundbttn_white_one);
                 RR_two_hour.setBackgroundResource(R.drawable.roundbttn_white_one_yellow);
@@ -298,10 +351,16 @@ public class ChooseDateTime extends AppCompatActivity {
 
                 RentForHour ="3hr";
 
+                TotalAmt = Preference.get(ChooseDateTime.this,Preference.KEY_threeHr);
+
                 txt_one.setTextColor(getResources().getColor(R.color.black));
+                txt_one_hour.setTextColor(getResources().getColor(R.color.black));
                 txt_two.setTextColor(getResources().getColor(R.color.black));
+                txt_two_hour.setTextColor(getResources().getColor(R.color.black));
                 txt_three.setTextColor(getResources().getColor(R.color.white));
+                txt_three_hour.setTextColor(getResources().getColor(R.color.white));
                 txt_four.setTextColor(getResources().getColor(R.color.black));
+                txt_four_hour.setTextColor(getResources().getColor(R.color.black));
 
                 RR_one_hour.setBackgroundResource(R.drawable.roundbttn_white_one);
                 RR_two_hour.setBackgroundResource(R.drawable.roundbttn_white_one);
@@ -316,11 +375,16 @@ public class ChooseDateTime extends AppCompatActivity {
             public void onClick(View v) {
 
                 RentForHour ="4hr";
+                TotalAmt = Preference.get(ChooseDateTime.this,Preference.KEY_fourHr);
 
                 txt_one.setTextColor(getResources().getColor(R.color.black));
+                txt_one_hour.setTextColor(getResources().getColor(R.color.black));
                 txt_two.setTextColor(getResources().getColor(R.color.black));
+                txt_two_hour.setTextColor(getResources().getColor(R.color.black));
                 txt_three.setTextColor(getResources().getColor(R.color.black));
+                txt_three_hour.setTextColor(getResources().getColor(R.color.black));
                 txt_four.setTextColor(getResources().getColor(R.color.white));
+                txt_four_hour.setTextColor(getResources().getColor(R.color.white));
 
                 RR_one_hour.setBackgroundResource(R.drawable.roundbttn_white_one);
                 RR_two_hour.setBackgroundResource(R.drawable.roundbttn_white_one);
@@ -331,6 +395,10 @@ public class ChooseDateTime extends AppCompatActivity {
         });
 
 
+      txt_one_hour.setText(OneHr);
+      txt_two_hour.setText(Twor);
+      txt_three_hour.setText(ThreeHr);
+        txt_four_hour.setText(FourHr);
 
     }
 

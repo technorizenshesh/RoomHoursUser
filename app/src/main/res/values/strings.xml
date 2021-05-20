@@ -1,14 +1,14 @@
 <resources>
     <string name="app_name">RoomHoursUser</string>
     <string name="one_slide">Lorem Ipsum dolor sit amet,Consectetier adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.Cum Sociis natoque penatibus et magnis dis parturient montes,nascetur ridiculus mus</string>
+    <string name="one_slide11">Lorem Ipsum dolor sit amet,Consectetier adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.Cum Sociis natoque penatibus et magnis dis parturient montes,nascetur ridiculus mus</string>
 
     <string name="checkInternet">Please Check Your Internet Connection</string>
     <string name="title_activity_use_current_location">Map</string>
     <string name="facebook_app_id">3378177625645396</string>
     <string name="title_activity_maps">Map</string>
 
-
-
+    <string name="select_language">Select Language</string>
     //Scan Card
     <string name="scan_card">Scan Card</string>
     <string name="scan_card_local">Scan Card Local</string>
@@ -22,6 +22,108 @@
     <string name="enableNameExtraction">Enable name extraction</string>
     <string name="enableExpiryExtraction">Enable expiry extraction</string>
     <string name="enableEnterCardManually">Enable manual entry</string>
+    <string name="leave_a_rating_help_us_improve">Leave a rating,help us improve!</string>
+    <string name="submit">Submit</string>
+    <string name="photo">Photo</string>
+    <string name="bank_details">Bank Details</string>
+    <string name="bank_account_details">Bank Account Details</string>
+    <string name="account_holder_name">Account Holder Name</string>
+    <string name="bank_name">Bank Name</string>
+    <string name="bank_account_name">Bank Account Name</string>
+    <string name="bank_code">Bank Code</string>
+    <string name="area_code">Area Code</string>
+    <string name="card_holder_name">Card holder Name</string>
+    <string name="add_card">Add Card</string>
+    <string name="card_number">Card Number</string>
+    <string name="expiry_date">Expiry Date</string>
+    <string name="scan_card_info_by_camera">Scan card info by camera</string>
+    <string name="debit_card_are_accepted_at_same_location_and_for_same_categories">Debit card are accepted at same Location and for same categories</string>
+    <string name="scan">Scan</string>
+    <string name="new_password">New Password</string>
+    <string name="change_password">Change Password</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="save">Save</string>
+    <string name="layla_parker">Layla parker</string>
+    <string name="check_in">Check in</string>
+    <string name="_1h">1h</string>
+    <string name="_2h">2h</string>
+    <string name="_3h">3h</string>
+    <string name="_4h">4h</string>
+    <string name="information">Information</string>
+    <string name="review">Review</string>
+    <string name="view_all">View All</string>
+    <string name="location">Location</string>
+    <string name="day_check_in">Day Check In</string>
+    <string name="day_check_out">Day Check out</string>
+    <string name="i_want_rent_for_hour">I want rent for hour</string>
+    <string name="next">Next</string>
+    <string name="filters">Filters</string>
+    <string name="clear_all">Clear all</string>
+    <string name="sort_by">Sort by</string>
+    <string name="less_price_first">Less Price First</string>
+    <string name="nearrest_to_me_first">Nearrest to me First</string>
+    <string name="filter">Filter</string>
+    <string name="reting">Rating</string>
+    <string name="services">Services</string>
+    <string name="private_bathroom_in_the_room">  Private bathroom \n in the room</string>
+    <string name="air_conditioned">Air Conditioned</string>
+    <string name="heating">Heating</string>
+    <string name="map_one">Map</string>
+
+    <string name="list">List</string>
+    <string name="best_match">Best Match</string>
+    <string name="favourites">Favourites</string>
+    <string name="apply_filter">Apply Filter</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="para_continuar">PARA CONTINUAR</string>
+    <string name="log_in_one">LOG IN</string>
+    <string name="get_started">Get Started</string>
+    <string name="sign_up">Sign UP</string>
+    <string name="don_t_have_an_account">Don\'t have an account ?</string>
+    <string name="dummy_text_is_test_that_is_used_in_the_n_publishing_industry_or_by_web_designers_to">Dummy text is test that is used in the \n publishing industry or by web designers to</string>
+    <string name="cash_payment">Cash Payment</string>
+    <string name="choose_desires_vehicle_type_we_offer_care_suitable_for_most_every_day_need">Choose desires vehicle type. We Offer care suitable for most every day need</string>
+    <string name="payment_method">Payment Method</string>
+    <string name="current_method">current method</string>
+    <string name="default1">Default</string>
+    <string name="general">General</string>
+    <string name="log_out">Log out</string>
+    <string name="withdraw_money">Withdraw Money</string>
+    <string name="notification">Notification</string>
+    <string name="allow_push_notification">Allow push notification</string>
+    <string name="papular_searches">Papular searches</string>
+    <string name="type_a_location">Type a Location</string>
+    <string name="sign_up_one">SIGN UP</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="all">All</string>
+    <string name="message">Message</string>
+    <string name="say_thankyou">Say Thankyou</string>
+    <string name="bienvenido">BIENVENIDO!</string>
+    <string name="encourange_guest_to_book">Encourange Guest To Book</string>
+    <string name="host_to_publish">Host To Publish</string>
+
+
+    <string name="continue_with_email">Continue with Email</string>
+    <string name="welcome">SIGN UP</string>
+    <string name="iempieza_a_general_dinero_desde_ya_mismo">iEmpieza a general dinero desde ya mismo!</string>
+    <string name="continue_with_google">Continue with Google</string>
+    <string name="continue_with_facebook">Continue with Facebook</string>
+    <string name="search_by_state_or_zip_code">Search by state or zip code</string>
+    <string name="change_language">Change Language</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="select_date">Select Date</string>
+    <string name="card_payment">Card Payment</string>
+    <string name="do_you_already_have_an_account">Do you already have an account?</string>
+    <string name="log_in_o">Log in</string>
+    <string name="no_room_available">No Room Available</string>
+    <string name="email_address_mobile_number">Email Address / Mobile Number</string>
+    <string name="password">Password</string>
+    <string name="no_favourites_item">No Favourites Item</string>
+    <string name="skip">Skip</string>
+    <string name="firstname">Firstname</string>
+    <string name="e_mail">E-Mail</string>
+    <string name="recommended">Recommended</string>
+    <string name="hay_tu_reserva_ahora">Haz tu reserva ahora!</string>
 
 
 </resources>

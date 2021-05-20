@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import androidx.fragment.app.Fragment;
 
@@ -20,7 +21,7 @@ import com.example.roomhoursuser.R;
 public class SliderFiveFragment extends Fragment {
 
     private View view;
-    private LinearLayout LL_img;
+    private RelativeLayout RR_comtinue;
 
     public SliderFiveFragment() {
         // Required empty public constructor
@@ -33,9 +34,9 @@ public class SliderFiveFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_slider_five, container, false);
 
 
-        LL_img = view.findViewById(R.id.LL_img);
+        RR_comtinue = view.findViewById(R.id.RR_comtinue);
 
-        LL_img.setOnClickListener(new View.OnClickListener() {
+        RR_comtinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), MainActivityLogin.class);

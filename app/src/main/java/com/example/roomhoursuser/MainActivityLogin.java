@@ -2,15 +2,20 @@ package com.example.roomhoursuser;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.roomhoursuser.HomeScreen.HomeActivity;
@@ -37,6 +42,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -51,8 +57,9 @@ import retrofit2.Response;
 public class MainActivityLogin extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
 
     private RelativeLayout RR_login;
+    private RelativeLayout RR_login_one;
     private RelativeLayout RR_faceBook_login;
-
+    private static final String TAG = "FaceBook HashKEy";
     //Google SignIn
     private RelativeLayout RR_google_login;
     private SignInButton signInButton;
@@ -66,25 +73,75 @@ public class MainActivityLogin extends AppCompatActivity implements GoogleApiCli
     String android_id ="";
     String result ="";
     private ProgressBar progressBar;
+    private TextView txt_allready_registed;
     private SessionManager sessionManager;
+
+    String token="";
+    GPSTracker gpsTracker;
+    String latitude ="";
+    String longitude ="";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Window window = getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.setStatusBarColor(ContextCompat.getColor(
+                    this, R.color.mehroon));
+        }
+
         setContentView(R.layout.activity_main_login);
 
         RR_faceBook_login=findViewById(R.id.RR_faceBook_login);
 
         RR_google_login=findViewById(R.id.RR_google_login);
         RR_faceBook_login=findViewById(R.id.RR_faceBook_login);
-        loginButton = findViewById(R.id.connectWithFbButton);
+        loginButton = findViewById(R.id.loginButton);
         RR_login = findViewById(R.id.RR_login);
+        RR_login_one = findViewById(R.id.RR_login_one);
         progressBar = findViewById(R.id.progressBar);
+        txt_allready_registed = findViewById(R.id.txt_allready_registed);
         //android device Id
         android_id = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
         sessionManager = new SessionManager(this);
 
 
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w(TAG, "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
+                        // Get new FCM registration token
+                        token = task.getResult();
+                        Log.e("token",token);
+                    }
+                });
+
+        gpsTracker=new GPSTracker(this);
+
+        if(gpsTracker.canGetLocation()){
+
+            latitude = String.valueOf(gpsTracker.getLatitude());
+            longitude = String.valueOf(gpsTracker.getLongitude());
+
+        }else{
+            gpsTracker.showSettingsAlert();
+        }
+
         RR_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivityLogin.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+        RR_login_one.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -240,7 +297,7 @@ public class MainActivityLogin extends AppCompatActivity implements GoogleApiCli
         Call<ResponseBody> call = RetrofitClients
                 .getInstance()
                 .getApi()
-                .SocialloginApi(FirstName,email,register_id,socialId,"25.00","25.00");
+                .SocialloginApi(FirstName,email,token,socialId,latitude,longitude);
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override

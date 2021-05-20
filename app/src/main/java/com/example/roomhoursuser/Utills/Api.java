@@ -1,12 +1,16 @@
 package com.example.roomhoursuser.Utills;
 
+import com.example.roomhoursuser.AllImageView.AllRoomImage.AllImageModel;
 import com.example.roomhoursuser.BankScreen.BankModel;
 import com.example.roomhoursuser.CheckInScreen.HomeDetailsDataModel;
 import com.example.roomhoursuser.CheckInScreen.HomeDetailsModel;
 import com.example.roomhoursuser.FavFragmen.ApiModel.GetFavModel;
+import com.example.roomhoursuser.GetChat;
 import com.example.roomhoursuser.HomeFragment.HomeModel;
 import com.example.roomhoursuser.LoginScreen.LoginModel;
 import com.example.roomhoursuser.MapScreen.MapModel;
+import com.example.roomhoursuser.MessageFragment.ChatConversation;
+import com.example.roomhoursuser.PaymentMwthod.BookingModel;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -28,6 +32,7 @@ public interface Api {
     String logout ="logout";
     String getProfile ="get_profile";
     String get_BankDetails ="get_BankDetails";
+    String get_room_image ="get_all_room_image";
     String getState = "get_state";
     String addVideo = "addVideo";
     String notification = "getNotification";
@@ -50,8 +55,12 @@ public interface Api {
     String getSellingFriend = "getSellingFriend";
     String addInterest = "addInterest";
     String getHome = "getHome";
-    String getCommentList = "getCommentList";
+    String room_booking = "room_booking";
     String add_to_photo = "add_photo_room";
+
+    String get_conversation_detail ="get_conversation_detail";
+    String get_chat ="get_chat";
+    String insert_chat ="insert_chat";
 
 
     @Multipart
@@ -71,6 +80,18 @@ public interface Api {
             @Field("lat") String lat,
             @Field("lon") String lon,
             @Field("type") String type
+    );
+
+    @FormUrlEncoded
+    @POST(room_booking)
+    Call<BookingModel>room_booking(
+            @Field("user_id") String user_id,
+            @Field("room_id") String room_id,
+            @Field("price") String price,
+            @Field("check_in_date") String check_in_date,
+            @Field("check_out_date") String check_out_date,
+            @Field("hours") String hours,
+            @Field("payment_type") String payment_type
     );
 
 
@@ -117,6 +138,12 @@ public interface Api {
     @POST(get_BankDetails)
     Call<BankModel>get_BankDetails(
             @Field("user_id") String user_id
+    );
+
+    @FormUrlEncoded
+    @POST(get_room_image)
+    Call<AllImageModel>get_room_image(
+            @Field("room_id") String room_id
     );
 
     @FormUrlEncoded
@@ -231,11 +258,27 @@ public interface Api {
             @Field("room_id") String room_id
     );
 
-/*
     @FormUrlEncoded
-    @POST(get_city)
-    Call<CityModel>get_city(
-            @Field("state_id") String userID
-    );*/
+    @POST(get_conversation_detail)
+    Call<ChatConversation>get_conversation_detail(
+            @Field("receiver_id") String receiver_id
+    );
+
+    @FormUrlEncoded
+    @POST(get_chat)
+    Call<GetChat>get_chat(
+            @Field("sender_id") String sender_id,
+            @Field("receiver_id") String receiver_id
+    );
+
+    @FormUrlEncoded
+    @POST(insert_chat)
+    Call<ResponseBody>insert_chat(
+            @Field("sender_id") String sender_id,
+            @Field("receiver_id") String receiver_id,
+            @Field("chat_message") String chat_message
+    );
+
+
 
 }

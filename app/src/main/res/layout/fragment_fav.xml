@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/RR_home"
-    android:background="#F8F9FE"
+     android:background="@color/grayLight"
     >
 
     <ProgressBar
@@ -28,7 +28,7 @@
         android:singleLine="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="No Favourites Item"
+        android:text="@string/no_favourites_item"
         android:visibility="gone"
         android:textColor="@color/black"
         android:textSize="@dimen/padding14" />
@@ -48,7 +48,7 @@
             android:singleLine="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Favourites"
+            android:text="@string/favourites"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="@dimen/pading24" />

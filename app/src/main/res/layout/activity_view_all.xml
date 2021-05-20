@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/RR_home"
-    android:background="#F8F9FE"
+     android:background="@color/grayLight"
     >
 
     <ProgressBar
@@ -37,7 +37,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:textColor="@color/black"
-                android:text="All"
+                android:text="@string/all"
                 android:textSize="@dimen/padding20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -96,7 +96,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/padding10"
                     android:layout_toRightOf="@+id/img_search"
-                    android:hint="Search by state or zip code"
+                    android:hint="@string/search_by_state_or_zip_code"
                     android:textColor="@color/black"
                     android:textSize="@dimen/padding14"
                     />

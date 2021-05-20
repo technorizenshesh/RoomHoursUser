@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import androidx.fragment.app.Fragment;
 
@@ -19,7 +20,7 @@ import com.example.roomhoursuser.R;
  */
 public class SliderTwoFragment extends Fragment {
 
-    private ImageView img_skip_two;
+    private RelativeLayout img_skip_two;
     public SliderTwoFragment() {
         // Required empty public constructor
     }

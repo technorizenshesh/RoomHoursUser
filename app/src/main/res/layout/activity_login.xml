@@ -50,7 +50,7 @@
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="LOG IN"
+                android:text="@string/log_in_one"
                 android:textColor="@color/white"
                 android:textSize="@dimen/padding35"/>
 
@@ -63,7 +63,7 @@
                 android:layout_marginTop="@dimen/padding5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="PARA CONTINUAR"
+                android:text="@string/para_continuar"
                 android:textColor="@color/white"
                 android:textSize="@dimen/padding18"/>
 
@@ -77,12 +77,12 @@
 
 
                 <EditText
-                    android:text="hemant11@gmail.com"
+                    android:text=""
                     android:id="@+id/edt_User"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@null"
-                    android:hint="Email Address / Mobile Number "
+                    android:hint="@string/email_address_mobile_number"
                     android:inputType="text"
                     android:maxLength="30"
                     android:padding="@dimen/padding10"
@@ -100,7 +100,7 @@
                 android:layout_height="55dp">
 
                 <EditText
-                    android:text="12345"
+                    android:text=""
                     android:padding="@dimen/padding10"
                     android:maxLength="30"
                     android:singleLine="true"
@@ -108,7 +108,7 @@
                     android:id="@+id/edt_Password"
                     android:textSize="@dimen/padding18"
                     android:background="@null"
-                    android:hint="Password"
+                    android:hint="@string/password"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     >
@@ -127,7 +127,7 @@
                 android:layout_centerVertical="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Forgot Password ?"
+                android:text="@string/forgot_password"
                 />
 
             <RelativeLayout
@@ -164,7 +164,7 @@
                         android:textColor="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Get Started"
+                        android:text="@string/get_started"
                         />
 
                 </RelativeLayout>
@@ -258,10 +258,11 @@
             android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Don't have an account ? "
+            android:text="@string/don_t_have_an_account"
             />
 
         <TextView
+            android:layout_marginLeft="@dimen/_5sdp"
             android:id="@+id/txt_allready_registed"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/txt1"
@@ -271,7 +272,7 @@
             android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sign UP"
+            android:text="@string/sign_up"
             />
 
     </RelativeLayout>

@@ -3,36 +3,83 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grayLight"
     >
 
     <LinearLayout
-        android:id="@+id/LL_img"
-        android:weightSum="2"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         >
 
-        <ImageView
-            android:layout_margin="@dimen/padding10"
-            android:scaleType="centerCrop"
-            android:layout_weight="1"
-            android:src="@drawable/img_one"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+        <RelativeLayout
+            android:layout_marginTop="@dimen/padding40"
+            android:layout_gravity="center"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_200sdp"
             >
-        </ImageView>
+            <ImageView
+                android:layout_marginLeft="-5dp"
+                android:layout_marginRight="-5dp"
+                android:layout_marginTop="-5dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/finl_img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+            </ImageView>
+        </RelativeLayout>
 
-        <ImageView
-            android:layout_margin="@dimen/padding10"
-            android:scaleType="centerCrop"
-            android:layout_weight="1"
-            android:src="@drawable/img_two"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
-        </ImageView>
+        <TextView
+            android:layout_gravity="center"
+            android:layout_below="@+id/img_logo"
+            android:layout_marginTop="@dimen/padding40"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hay_tu_reserva_ahora"
+            android:textColor="#A81D1A"
+            android:textSize="@dimen/padding30"/>
+
+        <RelativeLayout
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/padding50"
+            android:id="@+id/RR_comtinue"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="@dimen/_200sdp"
+            android:background="@drawable/roundbttn_red"
+            android:layout_height="@dimen/_55sdp">
+
+            <RelativeLayout
+                android:paddingLeft="@dimen/padding10"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+                <TextView
+                    android:layout_centerInParent="true"
+                    android:textSize="@dimen/padding16"
+                    android:textStyle="bold"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="QUIERO RESERVAR"
+                    />
+
+            </RelativeLayout>
+
+
+
+        </RelativeLayout>
 
     </LinearLayout>
+
+
+
+
+
+
 
 </RelativeLayout>

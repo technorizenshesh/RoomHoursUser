@@ -2,10 +2,14 @@ package com.example.roomhoursuser.CardDetails;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -15,6 +19,9 @@ import android.widget.Toast;
 import com.braintreepayments.cardform.view.CardEditText;
 import com.braintreepayments.cardform.view.CardholderNameEditText;
 import com.braintreepayments.cardform.view.ExpirationDateEditText;
+import com.example.roomhoursuser.AddRating.AddRating;
+import com.example.roomhoursuser.CardScan.CardScanActivity;
+import com.example.roomhoursuser.HomeScreen.HomeActivity;
 import com.example.roomhoursuser.Preference;
 import com.example.roomhoursuser.R;
 import com.example.roomhoursuser.Utills.RetrofitClients;
@@ -47,6 +54,14 @@ public class CardDetailsPayment extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card_details_payment);
+        Window window = getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.setStatusBarColor(ContextCompat.getColor(
+                    this, R.color.mehroon));
+        }
+
 
         et_card_holder_name=findViewById(R.id.et_card_holder_name);
         et_card_number=findViewById(R.id.et_card_number);
@@ -84,9 +99,9 @@ public class CardDetailsPayment extends AppCompatActivity {
 
                 }else
                 {
-
+                    Intent intent=new Intent(CardDetailsPayment.this, AddRating.class);
+                    startActivity(intent);
                     Toast.makeText(CardDetailsPayment.this, "Save Card", Toast.LENGTH_SHORT).show();
-                    onBackPressed();
 
                 }
 
@@ -97,6 +112,7 @@ public class CardDetailsPayment extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                startActivity(new Intent(CardDetailsPayment.this, CardScanActivity.class));
 
             }
         });

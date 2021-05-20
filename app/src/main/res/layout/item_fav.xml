@@ -8,6 +8,7 @@
     android:layout_margin="@dimen/pading10"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:ignore="MissingDefaultResource"
+     android:background="@color/grayLight"
     >
 
     <RelativeLayout

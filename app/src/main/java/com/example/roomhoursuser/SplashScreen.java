@@ -3,7 +3,10 @@ package com.example.roomhoursuser;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,8 +15,11 @@ import android.view.WindowManager;
 
 import com.example.roomhoursuser.HomeScreen.HomeActivity;
 import com.example.roomhoursuser.LoginScreen.LoginActivity;
+import com.example.roomhoursuser.SelectLaguage.SlectLanugage;
 import com.example.roomhoursuser.SignUpScreen.SignUpActivity;
 import com.example.roomhoursuser.SliderScreen.SliderActivity;
+
+import java.util.Locale;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -37,6 +43,18 @@ public class SplashScreen extends AppCompatActivity {
                     this, R.color.mehroon));
         }
 
+      String Language=  Preference.get(SplashScreen.this,Preference.KEY_language);
+
+        if(Language.equalsIgnoreCase("es"))
+        {
+            updateResources(SplashScreen.this,"es");
+
+        }else
+        {
+            updateResources(SplashScreen.this,"en");
+
+        }
+
         gpsTracker=new GPSTracker(SplashScreen.this);
 
         if(gpsTracker.canGetLocation()){
@@ -47,8 +65,8 @@ public class SplashScreen extends AppCompatActivity {
         }else{
 
             gpsTracker.showSettingsAlert();
-        }
 
+        }
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -66,15 +84,25 @@ public class SplashScreen extends AppCompatActivity {
 
                 }else
                 {
-                    Intent intent = new Intent(SplashScreen.this, SliderActivity.class);
+                    Intent intent = new Intent(SplashScreen.this, SlectLanugage.class);
                     startActivity(intent);
                     finish();
                 }
 
-
-
-
             }
         }, SPLASH_SCREEN_TIMEOUT);
+    }
+
+    private static void updateResources(Context context, String language) {
+
+        Locale locale = new Locale(language);
+        Locale.setDefault(locale);
+
+        Resources resources = context.getResources();
+
+        Configuration configuration = resources.getConfiguration();
+        configuration.locale = locale;
+
+        resources.updateConfiguration(configuration, resources.getDisplayMetrics());
     }
 }

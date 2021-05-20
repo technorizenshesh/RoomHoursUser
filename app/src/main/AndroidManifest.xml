@@ -10,7 +10,6 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- map -->
-
     <uses-feature
         android:glEsVersion="0x00020000"
         android:required="true" />
@@ -24,7 +23,21 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="LockedOrientationActivity">
-        <activity android:name=".CardScan.CardScanActivity"></activity>
+        <activity android:name=".SelectLaguage.SlectLanugage"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity android:name=".CheckInScreen.AllRoomImage"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
+            android:name=".AllImageView.AllImageViewpager"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".AddRating.AddRating" />
+        <activity
+            android:name=".CardScan.CardScanActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".ChatActivity"
             android:screenOrientation="portrait"
@@ -71,9 +84,7 @@
         <activity
             android:name=".ChooseDateTime.ChooseDateTime"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
-            </activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".DetailsRoom.DetailsActivity"
             android:screenOrientation="portrait"

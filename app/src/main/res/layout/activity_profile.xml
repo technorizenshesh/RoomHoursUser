@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginScreen.LoginActivity"
-    android:background="@color/grayLight"
+     android:background="@color/grayLight"
     android:padding="@dimen/padding15">
 
     <ProgressBar
@@ -85,7 +85,7 @@
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Log out"
+                    android:text="@string/log_out"
                     android:textColor="@color/mehroon"
                     android:textSize="@dimen/padding25"/>
 
@@ -95,7 +95,7 @@
                     android:layout_below="@+id/txt_logout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="General"
+                    android:text="@string/general"
                     android:textSize="@dimen/padding22"/>
 
                 <LinearLayout
@@ -108,7 +108,7 @@
                         android:id="@+id/RR_chnagePassword"
                         android:layout_marginTop="@dimen/padding20"
                         android:layout_width="match_parent"
-                        android:background="@drawable/roundbttn_white"
+                        android:background="@drawable/black_border_new"
                         android:layout_height="60dp">
 
 
@@ -116,7 +116,7 @@
                             android:layout_marginLeft="@dimen/padding20"
                             android:layout_centerVertical="true"
                             android:textColor="@color/black"
-                            android:text="Change Password"
+                            android:text="@string/change_password"
                             android:textSize="@dimen/padding20"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -140,7 +140,7 @@
                         android:id="@+id/RR_bank_details"
                         android:layout_marginTop="@dimen/padding20"
                         android:layout_width="match_parent"
-                        android:background="@drawable/roundbttn_white"
+                        android:background="@drawable/black_border_new"
                         android:layout_height="60dp">
 
 
@@ -148,7 +148,7 @@
                             android:layout_marginLeft="@dimen/padding20"
                             android:layout_centerVertical="true"
                             android:textColor="@color/black"
-                            android:text="Bank Account Details"
+                            android:text="@string/bank_account_details"
                             android:textSize="@dimen/padding20"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -169,9 +169,43 @@
                     </RelativeLayout>
 
                     <RelativeLayout
+                        android:id="@+id/RR_slectet_language"
                         android:layout_marginTop="@dimen/padding20"
                         android:layout_width="match_parent"
-                        android:background="@drawable/roundbttn_white"
+                        android:background="@drawable/black_border_new"
+                        android:layout_height="60dp">
+
+
+
+                        <TextView
+                            android:layout_marginLeft="@dimen/padding20"
+                            android:layout_centerVertical="true"
+                            android:textColor="@color/black"
+                            android:text="@string/change_language"
+                            android:textSize="@dimen/padding20"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            >
+                        </TextView>
+
+
+                        <ImageView
+                            android:layout_marginRight="@dimen/padding20"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/back_arrow"
+                            android:layout_width="@dimen/padding35"
+                            android:layout_height="@dimen/padding35"
+                            >
+
+                        </ImageView>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_marginTop="@dimen/padding20"
+                        android:layout_width="match_parent"
+                        android:background="@drawable/black_border_new"
                         android:layout_height="60dp">
 
 
@@ -179,7 +213,7 @@
                             android:layout_marginLeft="@dimen/padding20"
                             android:layout_centerVertical="true"
                             android:textColor="@color/black"
-                            android:text="Withdraw Money"
+                            android:text="@string/withdraw_money"
                             android:textSize="@dimen/padding20"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -204,7 +238,7 @@
                         android:layout_below="@+id/txt_logout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Notification"
+                        android:text="@string/notification"
                         android:textColor="@color/black"
                         android:textSize="@dimen/padding20"/>
 
@@ -214,7 +248,7 @@
                         android:textSize="@dimen/padding20"
                         android:textColor="@color/black"
                         android:layout_marginTop="@dimen/padding10"
-                        android:text="Allow push notification"
+                        android:text="@string/allow_push_notification"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         >

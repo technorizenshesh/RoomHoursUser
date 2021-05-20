@@ -4,15 +4,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#F1F2FA"
+     android:background="@color/grayLight"
     android:layout_height="match_parent"
     tools:context=".PaymentMwthod.PaymentMethodActivity">
 
+    <ProgressBar
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:id="@+id/progressBar"
+        android:background="@drawable/progresh_background"
+        android:elevation="@dimen/padding6"
+        android:padding="@dimen/padding5"
+        android:indeterminate="true"
+        android:indeterminateTintMode="src_atop"
+        android:indeterminateTint="@color/colorPrimary"
+        android:visibility="gone"/>
 
     <ScrollView
-        android:layout_above="@+id/txt_debit"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -87,7 +100,7 @@
                             android:textStyle="bold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Payment Method" />
+                            android:text="@string/payment_method" />
 
                         <TextView
                             android:layout_marginTop="@dimen/padding10"
@@ -99,7 +112,7 @@
                             android:textStyle="bold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="current method" />
+                            android:text="@string/current_method" />
 
 
 
@@ -107,14 +120,60 @@
                     </LinearLayout>
 
                     <TextView
+                        android:textStyle="bold"
                         android:layout_marginTop="@dimen/padding20"
                         android:layout_marginLeft="@dimen/padding15"
                         android:textColor="@color/black"
                         android:layout_marginRight="@dimen/padding20"
-                        android:textSize="@dimen/padding16"
+                        android:textSize="@dimen/padding18"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Choose desires vehicle type. We Offer care suitable for most every day need" />
+                        android:text="@string/choose_desires_vehicle_type_we_offer_care_suitable_for_most_every_day_need" />
+
+                    <RelativeLayout
+                        android:id="@+id/RR_cash"
+                        android:layout_marginTop="@dimen/padding20"
+                        android:layout_marginLeft="@dimen/padding15"
+                        android:layout_marginRight="@dimen/padding15"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_toLeftOf="@+id/RR_filter"
+                        android:background="@drawable/black_border_new">
+
+                        <ImageView
+                            android:id="@+id/img_card11"
+                            android:layout_marginLeft="@dimen/padding10"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/img_doller"
+                            android:layout_width="@dimen/padding50"
+                            android:layout_height="@dimen/padding50"
+                            >
+                        </ImageView>
+
+
+                        <TextView
+                            android:layout_centerVertical="true"
+                            android:layout_centerHorizontal="true"
+                            android:singleLine="true"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/padding20"
+                            android:textStyle="bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/cash_payment" />
+
+                        <ImageView
+                            android:id="@+id/img_cash_one"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="@dimen/padding10"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/check_icon"
+                            android:layout_width="@dimen/padding35"
+                            android:layout_height="@dimen/padding35"
+                            >
+                        </ImageView>
+
+                    </RelativeLayout>
 
                     <RelativeLayout
                         android:id="@+id/RR_card"
@@ -124,7 +183,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
                         android:layout_toLeftOf="@+id/RR_filter"
-                        android:background="@drawable/roundbttn_white_one">
+                        android:background="@drawable/black_border_new">
 
                         <ImageView
                             android:id="@+id/img_card1"
@@ -153,7 +212,7 @@
                                 android:textStyle="bold"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Card Payment" />
+                                android:text="@string/card_payment" />
 
                             <TextView
                                 android:layout_below="@+id/txt_payment"
@@ -161,57 +220,12 @@
                                 android:textSize="@dimen/padding18"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Default" />
+                                android:text="@string/default1" />
 
                         </RelativeLayout>
 
                         <ImageView
                             android:id="@+id/img_card_one"
-                            android:layout_alignParentRight="true"
-                            android:layout_marginRight="@dimen/padding10"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/check_icon"
-                            android:layout_width="@dimen/padding35"
-                            android:layout_height="@dimen/padding35"
-                            >
-                        </ImageView>
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:id="@+id/RR_cash"
-                        android:layout_marginTop="@dimen/padding20"
-                        android:layout_marginLeft="@dimen/padding15"
-                        android:layout_marginRight="@dimen/padding15"
-                        android:layout_width="match_parent"
-                        android:layout_height="80dp"
-                        android:layout_toLeftOf="@+id/RR_filter"
-                        android:background="@drawable/roundbttn_white_one">
-
-                        <ImageView
-                            android:id="@+id/img_card1"
-                            android:layout_marginLeft="@dimen/padding10"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/credit_card"
-                            android:layout_width="@dimen/padding50"
-                            android:layout_height="@dimen/padding50"
-                            >
-                        </ImageView>
-
-
-                        <TextView
-                            android:layout_centerVertical="true"
-                            android:layout_centerHorizontal="true"
-                            android:singleLine="true"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/padding20"
-                            android:textStyle="bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Cash Payment" />
-
-                        <ImageView
-                            android:id="@+id/img_cash_one"
                             android:layout_alignParentRight="true"
                             android:layout_marginRight="@dimen/padding10"
                             android:layout_centerVertical="true"
@@ -222,6 +236,8 @@
                         </ImageView>
 
                     </RelativeLayout>
+
+
 
                     <LinearLayout
                         android:visibility="gone"
@@ -287,7 +303,7 @@
                             android:textColor="@color/white"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Next"
+                            android:text="@string/next"
                             />
 
                     </RelativeLayout>
@@ -304,7 +320,7 @@
                         android:textSize="@dimen/padding12"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Debit card are accepted at same Location and for same categories" />
+                        android:text="@string/debit_card_are_accepted_at_same_location_and_for_same_categories" />
 
                     <ImageView
                         android:id="@+id/img_card"

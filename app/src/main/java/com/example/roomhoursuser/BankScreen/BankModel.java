@@ -6,6 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class BankModel {
+
     @SerializedName("result")
     @Expose
     private List<BankDataModel> result = null;

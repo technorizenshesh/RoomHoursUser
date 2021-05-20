@@ -4,9 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#F1F2FA"
+     android:background="@color/grayLight"
     android:layout_height="match_parent"
-    tools:context=".PaymentMwthod.PaymentMethodActivity">
+    tools:context=".PaymentMwthod.PaymentMethodActivity"
+    >
 
 
     <ProgressBar
@@ -59,6 +60,7 @@
                             >
 
                             <TextView
+                                android:gravity="left"
                                 android:layout_centerHorizontal="true"
                                 android:layout_centerVertical="true"
                                 android:id="@+id/txt_price"
@@ -69,11 +71,13 @@
                                 android:textStyle="bold"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Add Card" />
+                                android:text="@string/add_card" />
 
                         </RelativeLayout>
 
                         <TextView
+                            android:gravity="left"
+                            android:layout_gravity="left"
                             android:textStyle="bold"
                             android:layout_marginTop="@dimen/padding20"
                             android:layout_marginLeft="@dimen/padding20"
@@ -82,7 +86,7 @@
                             android:textSize="@dimen/padding16"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Card holder Name" />
+                            android:text="@string/card_holder_name" />
 
                         <com.braintreepayments.cardform.view.CardholderNameEditText
                             android:id="@+id/et_card_holder_name"
@@ -96,6 +100,8 @@
                             android:padding="8dp" />
 
                         <TextView
+                            android:gravity="left"
+                            android:layout_gravity="left"
                             android:textStyle="bold"
                             android:layout_marginTop="@dimen/padding20"
                             android:layout_marginLeft="@dimen/padding20"
@@ -104,7 +110,7 @@
                             android:textSize="@dimen/padding16"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Card  Number" />
+                            android:text="@string/card_number" />
 
                         <com.braintreepayments.cardform.view.CardEditText
                             android:id="@+id/et_card_number"
@@ -134,11 +140,13 @@
                                 android:orientation="vertical">
 
                                 <TextView
+                                    android:gravity="left"
+                                    android:layout_gravity="left"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/padding20"
                                     android:layout_marginRight="@dimen/padding20"
-                                    android:text="Expiry Date"
+                                    android:text="@string/expiry_date"
                                     android:textColor="@color/white"
                                     android:textSize="@dimen/padding16"
                                     android:textStyle="bold" />
@@ -222,7 +230,7 @@
                             android:textSize="@dimen/padding18"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Scan card info by camera" />
+                            android:text="@string/scan_card_info_by_camera" />
 
                     </LinearLayout>
 
@@ -239,6 +247,8 @@
 
 
                         <TextView
+                            android:gravity="left"
+                            android:layout_gravity="left"
                             android:layout_centerHorizontal="true"
                             android:textSize="18dp"
                             android:textStyle="bold"
@@ -246,7 +256,7 @@
                             android:textColor="@color/white"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Next"
+                            android:text="@string/next"
                             />
 
                     </RelativeLayout>
@@ -273,7 +283,7 @@
         android:textSize="@dimen/padding12"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Debit card are accepted at same Location and for same categories" />
+        android:text="@string/debit_card_are_accepted_at_same_location_and_for_same_categories" />
 
     <ImageView
         android:id="@+id/img_card"

@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import androidx.fragment.app.Fragment;
 
@@ -19,7 +20,7 @@ import com.example.roomhoursuser.SplashScreen;
  */
 public class SliderOneFragment extends Fragment {
 
-    private ImageView img_skip;
+    private RelativeLayout img_skip;
 
     public SliderOneFragment() {
         // Required empty public constructor
